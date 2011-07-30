@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sigurd - The Django Project Configurator!</title>
+    <meta name="author" content="WebRiders" />
+
+    <link rel="stylesheet" href="{{ STATIC_ROOT }}web/css/reset.css" />
+    <link rel="stylesheet" href="{{ STATIC_ROOT }}web/css/content.css" />
+    <link rel="stylesheet" href="{{ STATIC_ROOT }}web/css/layout.css" />
+
+    {% block css %}
+    {% endblock %}
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    {% block js %}
+    {% endblock %}
+
+    <header class="site-header">
+        <h1>Sigurd</h1>
+        <p>The Django Project Configurator!</p>
+    </header>
+
+    <div class="site-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>2011 &copy; Made by WebRiders</p>
+    </footer>
+</body>
+
+</html>
