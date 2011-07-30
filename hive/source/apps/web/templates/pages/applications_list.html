@@ -13,6 +13,12 @@
             {% for config in app.get_configs %}
                 <div class="app-config">
 
+                    {% if config.is_master %}
+                        <div class="config-is-master">
+                            Recomended
+                        </div>
+                    {% endif %}
+
                     <div class="config-title">
                         <span> Title: </span>
                         {{ config.title }}
@@ -25,6 +31,16 @@
                         </div>
                     {% endif %}
 
+                    <div class="config-author-name">
+                        <span> Supported versions: </span>
+
+                        {% if config.supported_versions %}
+                            {{ config.supported_versions }}
+                        {% else %}
+                            unknown
+                        {% endif %}
+                    
+                    </div>
 
                     {% if config.author_name %}
                         <div class="config-author-name">
@@ -39,6 +55,12 @@
                             {{ config.author_email }}
                         </div>
                     {% endif %}
+
+                    <div class="config-tarball">
+                        <span> Tarball: </span>
+                        <a href="/../media/{{ config.file_name }}"> Download </a>
+                    </div>
+
 
                 </div>
             {% endfor %}
