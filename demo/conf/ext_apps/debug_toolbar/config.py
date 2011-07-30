@@ -1,5 +1,6 @@
-class Settings(Sigurd.AppSettings):
-    ENABLED = True
+import sigurd
+
+class DebugToolbarConfig(sigurd.AppConfig):
 
     INTERNAL_IPS = ('127.0.0.1',)
     DEBUG_TOOLBAR_CONFIG = {
@@ -19,4 +20,4 @@ class Settings(Sigurd.AppSettings):
 
     def install(self):
         self.install_app("debug_toolbar")
-        self.install_middleware("debug_toolbar.middleware.DebugToolbarMiddleware", append_to_end=True)
+        self.install_middleware("debug_toolbar.middleware.DebugToolbarMiddleware")
