@@ -28,6 +28,7 @@ There are:
   1. Command-line project utils
   2. Python (Django) configuration utils
 
+
 Installation
 ^^^^^^^^^^^^
 
@@ -39,8 +40,14 @@ TODO: we are plan to make a distributive that you could install with pip:
 
 But for now only source code is available at http://github.com/webriders/sigurd
 
+
 ----------------
 Web-configurator
 ----------------
 
-You will find out all by yourself at the site: TODO
+You will find out how to use site - at the site (TODO).
+
+Installation
+^^^^^^^^^^^^
+
+You can also deploy a site. We have specific project structure. You will find the Site Django project in the *'source'*.
