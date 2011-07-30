@@ -6,9 +6,18 @@
 
     {% for app in  applications_list %}
 
-        {{ app }} <br/>
+        <div class="applications">
+
+            <a href="{{ app.url }}">{{ app.slug }}</a>
+
+            {% for config in app.get_configs %}
+                <div class="app-config">
+                    {{ config.title }}
+                </div>
+            {% endfor %}
+
+        </div>
 
     {% endfor %}
-
 
 {% endblock %}

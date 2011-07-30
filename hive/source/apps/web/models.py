@@ -1,12 +1,14 @@
 # -*- coding: UTF-8 -*-
 
 from django.db import models
-from datetime import datetime, date
 
 class Application(models.Model):
     slug = models.SlugField(max_length=64, verbose_name=u'Slug')
     url = models.URLField(max_length=256, blank=True, null=True, verbose_name=u'URL')
     published = models.BooleanField(blank=True, verbose_name='Visible on apps page')
+
+    def get_configs(self):
+        return ApplicationConfig.objects.filter(application=self, published=True)
 
     def __unicode__(self):
         return self.slug
