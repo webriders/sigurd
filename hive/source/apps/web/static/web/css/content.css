@@ -1,3 +1,34 @@
 p {
     margin: 0 0 10px;
 }
+
+.applications {
+    margin-bottom: 60px;
+}
+
+.app-config {
+    border: 1px solid;
+    padding: 10px;
+    margin: 30px;
+}
+
+.app-config span {
+    font-weight: bold;
+}
+
+.app-config .config-title {
+    margin-left: 20px;
+}
+
+.app-config .config-description {
+    margin-left: 40px;
+}
+
+.app-config .config-author-name {
+    margin-left: 40px;
+}
+
+
+.app-config .config-author-email {
+    margin-left: 40px;
+}
