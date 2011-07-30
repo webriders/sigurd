@@ -6,11 +6,13 @@ from web.models import Application, ApplicationConfig
 class ApplicationAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('slug', 'url', 'published',)
+    list_editable = ('published',)
 
 
 class ApplicationConfigAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('title', 'application', 'slug', 'views', 'downloads', 'published',)
+    list_editable = ('published',)
 
 
 admin.site.register(Application, ApplicationAdmin)
