@@ -26,5 +26,14 @@ class ApplicationConfig(models.Model):
     downloads = models.IntegerField(default=0, verbose_name=u"Downloads count")
     is_master = models.BooleanField(blank=True, verbose_name=u'Is master (default)')
 
+    def save(self, *args, **kwargs):
+
+        configs = ApplicationConfig.objects.filter(application=self.application, is_master=True)
+        if self.pk:
+            configs.exclude(pk=self.pk)
+        configs.update(is_master=False)
+
+        super(ApplicationConfig, self).save(*args, **kwargs)
+
     def __unicode__(self):
         return self.title or self.slug

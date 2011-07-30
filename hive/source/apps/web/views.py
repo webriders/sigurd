@@ -11,7 +11,7 @@ home = HomeView.as_view()
 class ApplicationsList(ListView):
     template_name = 'pages/applications_list.html'
     context_object_name = 'applications_list'
-    model = Application
+    queryset = Application.objects.filter(published=True)
 
     def get_context_data(self, **kwargs):
         context = super(ApplicationsList, self).get_context_data(**kwargs)

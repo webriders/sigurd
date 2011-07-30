@@ -11,7 +11,7 @@ class ApplicationAdmin(admin.ModelAdmin):
 
 class ApplicationConfigAdmin(admin.ModelAdmin):
     save_on_top = True
-    list_display = ('title', 'application', 'slug', 'views', 'downloads', 'published',)
+    list_display = ('title', 'application', 'slug', 'views', 'downloads', 'published', 'is_master',)
     list_editable = ('published',)
 
 
