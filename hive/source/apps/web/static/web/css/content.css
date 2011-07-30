@@ -16,19 +16,23 @@ p {
     font-weight: bold;
 }
 
+.app-config .config-is-master {
+    color: red;
+}
+
 .app-config .config-title {
-    margin-left: 20px;
+ 
 }
 
 .app-config .config-description {
-    margin-left: 40px;
+
 }
 
 .app-config .config-author-name {
-    margin-left: 40px;
+
 }
 
 
 .app-config .config-author-email {
-    margin-left: 40px;
+
 }
