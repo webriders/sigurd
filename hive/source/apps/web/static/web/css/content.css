@@ -1,7 +1,9 @@
-.applications {
+p {
+    margin: 0 0 10px;
+}
 
+.applications {
     margin-bottom: 60px;
-    
 }
 
 .app-config {
@@ -13,7 +15,6 @@
 .app-config span {
     font-weight: bold;
 }
-
 
 .app-config .config-title {
     margin-left: 20px;
@@ -31,5 +32,3 @@
 .app-config .config-author-email {
     margin-left: 40px;
 }
-
-

@@ -1,0 +1,2 @@
+class MainProjectConfig():
+    pass
