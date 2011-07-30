@@ -36,4 +36,6 @@ class ProdProjectConfig(MainProjectConfig):
         }
     }
 
+ProdProjectConfig().export_settings(globals())
+
   

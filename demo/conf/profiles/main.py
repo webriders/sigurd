@@ -1,4 +1,8 @@
 from conf.apps.web.config import ProdWebConfig
+from conf.ext_apps.celery.config import CeleryConfig
+from conf.ext_apps.haystack.config import HaystackConfig
+from conf.ext_apps.registration.config import RegistrationConfig
+from conf.ext_apps.south.config import SouthConfig
 import sigurd
 
 class MainProjectConfig(sigurd.ProjectConfig):
@@ -116,8 +120,11 @@ class MainProjectConfig(sigurd.ProjectConfig):
 
     def install_apps(self):
         self.install_app(ProdWebConfig)
-        self.install_app()
-        self.install_app()
+        self.install_app(HaystackConfig)
+        self.install_app("conf.ext_apps.admin_tools.AdminToolsConfig")
+        self.install_app(CeleryConfig)
+        self.install_app(RegistrationConfig)
+        self.install_app(SouthConfig)
 
 
 

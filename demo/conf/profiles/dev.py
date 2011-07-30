@@ -35,3 +35,6 @@ class DevProjectConfig(MainProjectConfig):
             },
         }
     }
+
+
+DevProjectConfig().export_settings(globals())
