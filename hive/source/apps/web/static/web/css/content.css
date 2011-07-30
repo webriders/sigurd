@@ -6,7 +6,24 @@ nav a {
     margin: 5px;
 }
 
-.applications {
+.add-app-config  {
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #ffffcc;
+    width: 90px;
+    cursor: pointer;
+}
+
+.add-app-config a {
+    cursor: pointer;
+    color: #cc3300;
+    text-decoration: none;
+}
+
+
+.application {
     margin-bottom: 60px;
 }
 
@@ -40,3 +57,25 @@ nav a {
 .app-config .config-author-email {
 
 }
+
+
+
+.add-config-form {
+    margin-bottom: 50px;
+}
+
+.app-config-form-field {
+    margin-bottom: 10px;
+    margin-left: 50px;
+
+}
+
+.app-config-form-field label {
+    display: block;
+
+}
+.app-config-form-field label.required {
+    font-weight: bold;
+
+}
+

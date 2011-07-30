@@ -4,9 +4,15 @@
 
     <h1> Applications </h1>
 
-    {% for app in  applications_list %}
+    <div class="add-app-config">
+         <a href="{% url add_app_config %}">Add Config</a>
+     </div>
 
-        <div class="applications">
+
+    {% for app in applications_list %}
+
+
+        <div class="application">
 
             <a href="{{ app.url }}">{{ app.slug }}</a>
 
