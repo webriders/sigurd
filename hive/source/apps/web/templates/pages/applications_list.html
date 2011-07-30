@@ -12,7 +12,34 @@
 
             {% for config in app.get_configs %}
                 <div class="app-config">
-                    {{ config.title }}
+
+                    <div class="config-title">
+                        <span> Title: </span>
+                        {{ config.title }}
+                    </div>
+
+                    {% if config.description %}
+                        <div class="config-description">
+                            <span> Description: </span>
+                            {{ config.description }}
+                        </div>
+                    {% endif %}
+
+
+                    {% if config.author_name %}
+                        <div class="config-author-name">
+                            <span> Author name: </span>
+                            {{ config.author_name }}
+                        </div>
+                    {% endif %}
+
+                    {% if config.author_email %}
+                        <div class="config-author-email">
+                            <span> Author e-mail: </span>
+                            {{ config.author_email }}
+                        </div>
+                    {% endif %}
+
                 </div>
             {% endfor %}
 
