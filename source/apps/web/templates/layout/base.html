@@ -6,9 +6,9 @@
     <title>Sigurd - The Django Project Configurator!</title>
     <meta name="author" content="WebRiders" />
 
-    <link rel="stylesheet" href="{{ STATIC_ROOT }}web/css/reset.css" />
-    <link rel="stylesheet" href="{{ STATIC_ROOT }}web/css/content.css" />
-    <link rel="stylesheet" href="{{ STATIC_ROOT }}web/css/layout.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}web/css/reset.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}web/css/content.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}web/css/layout.css" />
 
     {% block css %}
     {% endblock %}
@@ -32,7 +32,7 @@
         {% endblock %}
     </div>
 
-    <footer>
+    <footer class="site-footer">
         <p>2011 &copy; Made by WebRiders</p>
     </footer>
 </body>

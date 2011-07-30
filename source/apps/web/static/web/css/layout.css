@@ -1,0 +1,41 @@
+body {
+    font: 1em Verdana,sans-serif;
+    padding: 0;
+    margin:  0;
+}
+
+.site-header {
+    overflow: hidden;
+    padding: 10px;
+}
+
+.site-header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #800012;
+    margin: 0;
+    float: left;
+}
+
+.site-header > p {
+    float: left;
+    font-size: 1em;
+    margin: 20px 0 0 10px;
+    color: #800012;
+}
+
+.site-content {
+    padding: 10px;
+}
+
+.site-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+}
+
+.site-footer p {
+    margin: 0;
+}

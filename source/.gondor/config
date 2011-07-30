@@ -14,4 +14,4 @@ migrations = none
 
 ; whether or not to run collectstatic (or build_static if collectstatic is not
 ; available)
-staticfiles = off
+staticfiles = on
