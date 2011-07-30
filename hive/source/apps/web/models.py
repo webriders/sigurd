@@ -8,6 +8,9 @@ class Application(models.Model):
     url = models.URLField(max_length=256, blank=True, null=True, verbose_name=u'URL')
     published = models.BooleanField(blank=True, verbose_name='Visible on apps page')
 
+    def __unicode__(self):
+        return self.slug
+
 
 class ApplicationConfig(models.Model):
     published = models.BooleanField(blank=True, verbose_name='Visible on configs page')
@@ -22,3 +25,6 @@ class ApplicationConfig(models.Model):
     views = models.IntegerField(default=0, verbose_name=u"Views count")
     downloads = models.IntegerField(default=0, verbose_name=u"Downloads count")
     is_master = models.BooleanField(blank=True, verbose_name=u'Is master (default)')
+
+    def __unicode__(self):
+        return self.title or self.slug
