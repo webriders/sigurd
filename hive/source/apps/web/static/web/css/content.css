@@ -2,6 +2,10 @@ p {
     margin: 0 0 10px;
 }
 
+nav a {
+    margin: 5px;
+}
+
 .applications {
     margin-bottom: 60px;
 }
