@@ -157,10 +157,14 @@ class TestComplexProjectConfig(sigurd.BaseProjectConfig):
         self.install_app(HaystackConfig)
         self.install_app("sigurd.tests.configs.project_complex.BaseWebConfig")
 
-class DemoTestComplexProjectConfig(sigurd.BaseProjectConfig):
+class DemoTestComplexProjectConfig(TestComplexProjectConfig):
+    DEBUG=True
+
     def install_apps(self):
         self.install_app("sigurd.tests.configs.project_complex.BaseWebConfig")
 
-class ProdTestComplexProjectConfig(sigurd.BaseProjectConfig):
+class ProdTestComplexProjectConfig(TestComplexProjectConfig):
+    DEBUG=False
+
     def install_apps(self):
         self.install_app(HaystackConfig)
