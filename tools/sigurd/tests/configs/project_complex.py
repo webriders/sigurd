@@ -2,7 +2,7 @@ import os
 import sigurd
 
 class HaystackConfig(sigurd.BaseAppConfig):
-    HAYSTACK_SITECONF = 'conf.ext_apps.haystack.fulltext_search'
+    HAYSTACK_SITECONF = 'conf.haystack.fulltext_search'
     HAYSTACK_SEARCH_ENGINE = 'whoosh'
 
     def init_settings(self):

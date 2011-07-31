@@ -11,7 +11,22 @@
 
     {% block js %}
     {% endblock %}
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            margin-left: 40px;
+            font-size: 13px;
+        }
+        h3 {
+            font-weight: normal;
+        }
+        .gray {
+            color: gray;
+        }
+    </style>
 </head>
+
+
 
 <body>
     <header class="site-header">
@@ -27,7 +42,56 @@
                 configuration class files.
             </p>
             <p>
-                {{ ACTIVE_SIGURD_PROFILE }}
+                <hr/>
+                {% for app_config in ACTIVE_SIGURD_PROFILE.app_configs %}
+                    <h3>App: <strong>{{ app_config.get_name }}</strong></h3>
+
+                    {% if app_config.internal_settings %}
+                        <strong>Settings:</strong>
+                        <ul>
+                            {% for key, value in app_config.internal_settings.items %}
+                                <li><span class="gray">{{ key }}</span> ="{{ value }}"</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% if app_config.internal_apps %}
+                        <strong>Apps:</strong>
+                        <ul>
+                            {% for value in app_config.internal_apps %}
+                                <li>{{ value }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% if app_config.internal_cps %}
+                        <strong>Context processors: </strong>
+                        <ul>
+                            {% for value in app_config.internal_cps %}
+                                <li>{{ value }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% if app_config.internal_mds %}
+                        <strong>Middleware classes: </strong>
+                        <ul>
+                            {% for value in app_config.internal_mds %}
+                                <li>{{ value }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% if app_config.internal_mds %}
+                        <strong>URLs: </strong>
+                        <ul>
+                            {% for value in app_config.internal_urls %}
+                                <li>{{ value }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <hr/>
+                {% endfor %}
             </p>
         {% endblock %}
     </div>
