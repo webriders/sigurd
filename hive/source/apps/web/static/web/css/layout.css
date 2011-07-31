@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "InsolentRegular";
-    src: url("../fonts/insolent.woff") format("woff"), url("../fonts/insolent.ttf") format("truetype"), url("../fonts/insolent.svg#webfontD7S5Wv86") format("svg");
+    src: local("../fonts/insolent"), url("../fonts/insolent.woff") format("woff"), url("../fonts/insolent.ttf") format("truetype"), url("../fonts/insolent.svg#webfontD7S5Wv86") format("svg");
 }
 
 body {
@@ -24,16 +24,19 @@ body {
     position: relative;
 }
 
-.site-header h1 a {
-    display: block;
-    text-decoration: none;
-    font-family: 'InsolentRegular',Verdana,sans-serif;
+.site-header h1 {
     font-size: 3.5em;
     height: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
+    line-height: 1em;
     margin: 0;
     float: left;
+}
+
+.site-header h1 a {
+    text-decoration: none;
+    font-family: 'InsolentRegular',Verdana,sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
     text-shadow: 2px 2px 0 white, -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white;
     color: #c9013e;
 }
