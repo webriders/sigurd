@@ -1,6 +1,19 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
+    <aside class="important-message formatted-text">
+        <h1 class="message-title">Problems with .tar.gz</h1>
+        <p>
+            Somehow all our <strong>tar.gz</strong> are returned from server with "Content-Type: plain/text" header.
+            Unfortunately we don't have time to fix it now.
+        </p>
+        <p>Chrome and IE downloading it well. But Firefox in Ubuntu corrupts the archive so you can't open it.</p>
+        <p>
+            We promise that we will fix it as soon as we will move the website to our dedicated hosting.
+            But for now we suggest you to download these configs via Chrome browser.
+        </p>
+    </aside>
+
     <section class="downloads-list">
         <h1>Downloads</h1>
 

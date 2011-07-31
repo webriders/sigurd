@@ -176,3 +176,23 @@ nav.main-site-nav p.hint-text {
 .site-pusher {
     height: 2em;
 }
+
+aside.important-message {
+    float: right;
+    width: 360px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+    background: #ff6400;
+    color: #fff;
+    padding: 6px 10px 16px;
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+aside.important-message h1.message-title {
+    font-size: 1.8em;
+}
+
+aside.important-message a {
+    color: #c9013e;
+}
