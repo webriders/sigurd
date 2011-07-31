@@ -1,6 +1,73 @@
-.sigurd-form {
-
+.common-form {
+    overflow: hidden;
 }
+
+.common-form h1 {
+    font-size: 2em;
+    margin-bottom: 16px;
+}
+
+.common-form form {
+    background: #2e3c53 url('../images/form-bg.gif') repeat;
+    border-radius: 6px;
+    font-size: 0.8em;
+    padding: 20px;
+    /*width: 700px;*/
+    float: left;
+}
+
+.common-form .form-field-wrap {
+    margin-bottom: 10px;
+}
+
+.common-form .form-field-wrap .errorlist {
+    list-style: none;
+    color: #e72034;
+}
+
+.common-form .form-field-wrap .helptext {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+}
+
+.common-form form label {
+    display: block;
+}
+
+.common-form form label .required-mark {
+    color: #e72034;
+}
+
+.common-form form input[type="text"],
+.common-form form input[type="password"],
+.common-form form textarea,
+.common-form form select {
+    width: 400px;
+    font-size: 1.2em;
+}
+
+.common-form form input[type="submit"] {
+    font-weight: bold;
+    padding: 4px 10px;
+    line-height: 36px;
+    height: 36px;
+    background: #101e39;
+    text-transform: uppercase;
+    border-radius: 6px;
+    color: #ddd;
+    margin-right: 10px;
+    border: none;
+    margin-top: 10px;
+}
+
+.common-form form input[type="submit"]:hover {
+    color: #101e39;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+/*
 
 .add-config-form {
     margin-bottom: 50px;
@@ -8,7 +75,6 @@
 
 .app-config-form-field {
     margin-bottom: 10px;
-    margin-left: 50px;
 
 }
 
@@ -26,3 +92,4 @@
     font-weight: bold;
 
 }
+*/

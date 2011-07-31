@@ -1,31 +1,25 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
+    <section class="common-form">
+        <h1> Add Config </h1>
 
-    <h1> Add Config </h1>
-
-    <div class="add-config-form">
-        <form action="../" method="post" enctype="multipart/form-data">
+        <form action="." method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
             {% for field in form %}
-                <div class="app-config-form-field">
-                    <label {% if field.field.required %}class="required"{% endif %}> {{ field.label }} </label> {{ field }}
+                <div class="form-field-wrap">
+                    <label for="{{ field.auto_id }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required-mark">*</span>{% endif %}
+                    </label>
+                    {{ field }}
+                    <span class="helptext">{{ field.help_text }}</span>
+                    {{ field.errors }}
                 </div>
-
-                {% if field.errors %}
-                    <div class="app-config-form-field-error">
-                        {{ field.errors }}
-                    </div>
-                {% endif %}
-
             {% endfor %}
 
-            <div class="app-config-form-field">
-                <input type="submit"/>
-            </div>
-
+            <input type="submit" value="Submit Config"/>
         </form>
-    </div>
-
+    </section>
 {% endblock %}

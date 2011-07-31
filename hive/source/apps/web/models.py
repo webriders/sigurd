@@ -22,7 +22,7 @@ class ApplicationConfig(models.Model):
     description = models.TextField(max_length=3096, blank=True, null=True)
     slug = models.SlugField(max_length=64, help_text="Config unique ID")
     author_name = models.CharField(max_length=128, blank=True, null=True)
-    author_email = models.EmailField(max_length=128, blank=True, null=True, verbose_name="Author e-mail")
+    author_email = models.EmailField(max_length=128, blank=True, null=True, verbose_name="Author e-mail", help_text="We will not publish it")
     supported_versions = models.CharField(max_length=128, blank=True, null=True, help_text="Supported application versions, e.g.: \"1.3.1-2.5\", or \"newer than 1.6.3\"")
     archive = models.FileField(upload_to='.', verbose_name=u'Archive with config', help_text="Only .tar.gz and .tgz is supported for now")
     downloads = models.IntegerField(default=0, verbose_name=u"Downloads count")
