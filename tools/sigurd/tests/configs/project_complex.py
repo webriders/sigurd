@@ -1,11 +1,40 @@
-from conf.apps.web.config import ProdWebConfig
-from conf.ext_apps.celery.config import CeleryConfig
-from conf.ext_apps.haystack.config import HaystackConfig
-from conf.ext_apps.registration.config import RegistrationConfig
-from conf.ext_apps.south.config import SouthConfig
+import os
 import sigurd
 
-class MainProjectConfig(sigurd.BaseProjectConfig):
+class HaystackConfig(sigurd.AppConfig):
+    HAYSTACK_SITECONF = 'conf.haystack.fulltext_search'
+    HAYSTACK_SEARCH_ENGINE = 'whoosh'
+
+    def install_settings(self):
+        self.HAYSTACK_WHOOSH_PATH = os.path.join(self.main_settings.PROJECT_ROOT, 'search_index')
+
+    def install(self):
+        self.install_app("haystack")
+
+class BaseWebConfig(sigurd.AppConfig):
+    WEBSERVICE_LINK = "http://rambler.com.ua"
+
+    def __init__(self, main_setting):
+        super(BaseWebConfig).__init__(main_setting)
+        self.MY_CONSTANT = "MAMBOOO"
+
+    def install(self):
+        self.install_app("web")
+        self.install_middleware_class("web.middleware.RegionSelectorMiddleware", prepend=True)
+        self.install_context_processor("web.context_processors.add_cities")
+
+    def install_urls(self, main_urls):
+        self.install_url(main_urls, r'^$', 'web.urls')
+
+
+class ProdWebConfig(BaseWebConfig):
+    WEBSERVICE_LINK = "http://yandex.com.ua"
+
+class DevWebConfig(BaseWebConfig):
+    WEBSERVICE_LINK = "http://google.com.ua"
+
+
+class TestComplexProjectConfig(sigurd.BaseProjectConfig):
     # Django settings for demo project.
 
     DEBUG = True
@@ -119,12 +148,6 @@ class MainProjectConfig(sigurd.BaseProjectConfig):
     )
 
     def install_apps(self):
-        self.install_app(ProdWebConfig)
         self.install_app(HaystackConfig)
-        self.install_app("conf.ext_apps.admin_tools.AdminToolsConfig")
-        self.install_app(CeleryConfig)
-        self.install_app(RegistrationConfig)
-        self.install_app(SouthConfig)
-
-
+        self.install_app("sigurd.tests.admin_tools.AdminToolsConfig")
 
