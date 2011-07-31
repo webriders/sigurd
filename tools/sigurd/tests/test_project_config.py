@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from configs.project_complex import TestComplexProjectConfig
-from sigurd import BaseProjectConfig
+from sigurd.project_config import BaseProjectConfig
 
 class TestProjectConfig(TestCase):
 
