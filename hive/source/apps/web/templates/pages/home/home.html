@@ -1,0 +1,67 @@
+{% extends 'layout/base.html' %}
+
+{% block js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}web/js/homepage.js"></script>
+{% endblock %}
+
+{% block content %}
+    {% include 'pages/home/overview.html' %}
+
+    <section class="formatted-text">
+        <h1>What is Sigurd?</h1>
+        <p>
+            Sigurd is powerfull Django project configuration tool. <br/>
+            Django 1.3 brings class-based views, Sigurd brings <strong>class-based settings</strong><br/>
+            With order we bring abilities!
+        </p>
+        <p>You able to simply create:</p>
+        <ul class="features-list">
+            <li>
+                <h3>Application configurations</h3>
+                <p>
+                    Your app settings now stored in class. Urls are there too. <br/>
+                    You have an ability to create settings that are dependant on default ones (e.g. STATIC_URL). <br/>
+                    And you are able to extend / re-order / override default settings (e.g. INSTALLED_APPS)
+                </p>
+            <li>
+                <h3>Application profiles</h3>
+                <p>
+                    One Django app could have infinite amount of configs (or we may call it - profiles) <br/>
+                    and you may use all of them in one project.
+                </p>
+            </li>
+            <li>
+                <h3>Project configurations</h3>
+                <p>
+                    Your project may have own settings and urls, even if you don't use any application. <br>
+                    And you're free to extend / re-order / override default settings too.
+                </p>
+            </li>
+            <li>
+                <h3>Project profiles</h3>
+                <p>
+                    Same as app configs, there could be many project configs for one project. <br/>
+                    And you can switch them simply through the <strong>--settings</strong> option.
+                </p>
+            </li>
+        </ul>
+    </section>
+    <section class="formatted-text">
+        <h1>What can you do?</h1>
+        <ul>
+            <li>
+                You can <a href="{% url applications_list %}">start browsing configs</a> to find the one you need. <br/>
+                Then - download it and install into your project.
+            </li>
+            <li>You are free to create and <a href="{% url add_app_config %}">upload your own config</a>, if you haven't found one.
+            </li>
+            <li>You can follow our documentation (<em>TODO</em>) and create own Sigurd-based <br/>
+                configs in your apps and projects.
+            </li>
+            <li>
+                <em>TODO:</em> And we are planning to create <em>sigurd-tools</em> so your will be able <br/>
+                to find and install configs for your project app from the command-line.
+            </li>
+        </ul>
+    </section>
+{% endblock %}

@@ -1,0 +1,157 @@
+/*==================================================== Home page =====================================================*/
+ul.features-list {}
+ul.features-list li p {
+    color: #acacac;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/*---------------------------------------- "Short Overview" block on Homepage ----------------------------------------*/
+.short-overview {
+    float: right;
+    width: 360px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+    background: #cdcdcd;
+    border-radius: 6px;
+    color: #2e2e2e;
+    padding: 10px;
+    font-size: 0.9em;
+    overflow: hidden;
+    position: relative;
+}
+
+.short-overview h2 {
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    color: #c9013e;
+    text-shadow: 0 1px 0 #bbb;
+}
+
+.short-overview .screen-at-left {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 16px;
+}
+
+.short-overview .screen-at-right {
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 16px;
+}
+
+.short-overview .feature {
+    overflow: hidden;
+}
+
+.short-overview .code-entry {
+    padding: 6px;
+    margin-bottom: 16px;
+    color: #00a900;
+    background: #232323;
+}
+
+.short-overview .hidden-feature {
+    display: none;
+}
+
+.short-overview .more-overviews-button {
+    background: gray;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.short-overview .less-overviews-button {
+    background: gray;
+    color: white;
+    padding: 3px 6px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
+}
+
+/* Configs list */
+.add-app-config  {
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #ffffcc;
+    width: 90px;
+    cursor: pointer;
+}
+
+.add-app-config a {
+    cursor: pointer;
+    color: #cc3300;
+    text-decoration: none;
+}
+
+
+.application {
+    margin-bottom: 60px;
+}
+
+.app-config {
+    border: 1px solid;
+    padding: 10px;
+    margin: 30px;
+}
+
+.app-config span {
+    font-weight: bold;
+}
+
+.app-config .config-is-master {
+    color: red;
+}
+
+.app-config .config-title {
+
+}
+
+.app-config .config-description {
+
+}
+
+.app-config .config-author-name {
+
+}
+
+.app-config .config-author-email {
+
+}
+
+.add-config-form {
+    margin-bottom: 50px;
+}
+
+.app-config-form-field {
+    margin-bottom: 10px;
+    margin-left: 50px;
+
+}
+
+.app-config-form-field-error li {
+    color: red;
+    list-style: none;
+}
+
+
+.app-config-form-field label {
+    display: block;
+
+}
+.app-config-form-field label.required {
+    font-weight: bold;
+
+}
+

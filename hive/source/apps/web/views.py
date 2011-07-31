@@ -8,7 +8,7 @@ from web.forms import ApplicationConfigForm
 
 
 class HomeView(TemplateView):
-    template_name = 'pages/home.html'
+    template_name = 'pages/home/home.html'
 
 home = HomeView.as_view()
 

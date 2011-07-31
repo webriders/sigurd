@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}web/css/reset.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}web/css/content.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}web/css/layout.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}web/css/pages.css" />
 
     {% block css %}
     {% endblock %}
@@ -16,14 +17,18 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+    {% block js %}
+    {% endblock %}
 </head>
 
 <body>
-    {% block js %}
-    {% endblock %}
-
     <header class="site-header">
-        <h1>Sigurd</h1>
+        <h1>
+            <a href="/">Sigurd</a>
+        </h1>
         <p>The Django Project Configurator!</p>
         <a class="add-config-button" href="{% url add_app_config %}"><strong>Add</strong> your app config!</a>
     </header>
@@ -35,8 +40,10 @@
         {% endblock %}
     </div>
 
+    <div class="site-pusher"></div>
+
     <footer class="site-footer">
-        <p>2011 &copy; Made by WebRiders</p>
+        <p>2011 &copy; Made by <a href="http://webriders.com.ua/">WebRiders</a></p>
     </footer>
 </body>
 

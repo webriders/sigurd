@@ -1,0 +1,36 @@
+<aside class="short-overview formatted-text" id="short-overview">
+    <h2>Short overview</h2>
+
+    <input type="button" value="hide info" class="less-overviews-button" />
+
+    <div class="feature">
+        <img alt="screen 1" src="{{ MEDIA_URL }}tutorial/screen-1.png" class="screen-at-left"/>
+        <p>All project and application configs are inside ./conf/ but it's only a recommendation.</p>
+        <p>You may store them in some other place.</p>
+        <input type="button" value="More →" class="more-overviews-button" />
+    </div>
+
+    <div class="feature hidden-feature">
+        <img alt="screen 2" src="{{ MEDIA_URL }}tutorial/screen-2.png" class="screen-at-left"/>
+        <p><br/><br/>&larr; You may create different project profiles.</p>
+        <br clear="all"/>
+
+        <p>How to use them? Just specify settings:</p>
+        <blockquote class="code-entry">
+            <code>
+                $ python manage.py runserver --settings=conf.profiles.dev
+            </code>
+        </blockquote>
+    </div>
+
+    <div class="feature hidden-feature">
+        <img alt="screen 3" src="{{ MEDIA_URL }}tutorial/screen-3.png" class="screen-at-left"/>
+        <p><br/>&larr; Here are Django application configs.</p>
+        <p>Here may be some third-party app configs or your own.</p>
+    </div>
+
+    <div class="feature hidden-feature">
+        <p>App Config source code example:</p>
+        <img alt="screen 4" src="{{ MEDIA_URL }}tutorial/screen-4.png"/>
+    </div>
+</aside>

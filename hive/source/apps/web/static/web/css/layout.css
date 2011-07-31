@@ -17,10 +17,6 @@ body {
     color: #f4f4f4;
 }
 
-a {
-    color: #6495ed;
-}
-
 /*------------------------------------------------------ Header ------------------------------------------------------*/
 .site-header {
     overflow: hidden;
@@ -28,7 +24,9 @@ a {
     position: relative;
 }
 
-.site-header h1 {
+.site-header h1 a {
+    display: block;
+    text-decoration: none;
     font-family: 'InsolentRegular',Verdana,sans-serif;
     font-size: 3.5em;
     height: 1em;
@@ -136,15 +134,25 @@ nav.main-site-nav p.hint-text {
 /*----------------------------------------------------- Content ------------------------------------------------------*/
 .site-content {
     padding: 16px;
+    overflow: hidden;
 }
 
 .site-footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    padding: 10px;
+    padding: 0 1em;
+    height: 2em;
+    line-height: 2em;
+    font-size: 0.9em;
+    background: #000;
+    width: 100%;
 }
 
 .site-footer p {
     margin: 0;
+}
+
+.site-pusher {
+    height: 2em;
 }
