@@ -58,3 +58,8 @@ Installation
 We provide this site sources.
 You can deploy it locally or make a clone if you want.
 We have specific project structure. You will find the Site Django project in the *'source'*.
+
+Extra information
+^^^^^^^^^^^^
+
+For license instructions, see LICENSE.
