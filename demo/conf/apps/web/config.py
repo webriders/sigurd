@@ -1,10 +1,10 @@
 import sigurd
 
-class BaseWebConfig(sigurd.AppConfig):
+class BaseWebConfigBase(sigurd.BaseAppConfig):
     WEBSERVICE_LINK = "http://rambler.com.ua"
 
     def __init__(self, main_setting):
-        super(BaseWebConfig).__init__(main_setting)
+        super(BaseWebConfigBase).__init__(main_setting)
         self.MY_CONSTANT = "MAMBOOO"
 
     def install(self):
@@ -17,9 +17,9 @@ class BaseWebConfig(sigurd.AppConfig):
 
 
 
-class ProdWebConfig(BaseWebConfig):
+class ProdWebConfig(BaseWebConfigBase):
     WEBSERVICE_LINK = "http://yandex.com.ua"
 
-class DevWebConfig(BaseWebConfig):
+class DevWebConfig(BaseWebConfigBase):
     WEBSERVICE_LINK = "http://google.com.ua"
 

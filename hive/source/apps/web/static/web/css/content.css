@@ -53,12 +53,9 @@ nav a {
 
 }
 
-
 .app-config .config-author-email {
 
 }
-
-
 
 .add-config-form {
     margin-bottom: 50px;
@@ -69,6 +66,12 @@ nav a {
     margin-left: 50px;
 
 }
+
+.app-config-form-field-error li {
+    color: red;
+    list-style: none;
+}
+
 
 .app-config-form-field label {
     display: block;

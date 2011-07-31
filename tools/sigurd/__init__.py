@@ -32,7 +32,7 @@ class Config(object):
 
 
 #================================================== Application Config =================================================
-class AppConfig(Config):
+class BaseAppConfig(Config):
     """
     Django Application config.
     Contains settings and urls.

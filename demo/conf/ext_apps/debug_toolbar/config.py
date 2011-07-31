@@ -1,6 +1,6 @@
 import sigurd
 
-class DebugToolbarConfig(sigurd.AppConfig):
+class DebugToolbarConfigBase(sigurd.BaseAppConfig):
 
     INTERNAL_IPS = ('127.0.0.1',)
     DEBUG_TOOLBAR_CONFIG = {

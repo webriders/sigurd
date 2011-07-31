@@ -1,6 +1,4 @@
 import sigurd
 
-class CeleryConfig(sigurd.AppConfig):
-
-    def install(self):
-        self.install_app("celery")
+class CeleryConfigBase(sigurd.BaseAppConfig):
+    app_name = "celery"
