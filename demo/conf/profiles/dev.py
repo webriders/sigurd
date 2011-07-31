@@ -19,7 +19,7 @@ class DevProjectConfig(MainProjectConfig):
 
         self.install_app(HaystackConfig)
         self.install_app(SouthConfig)
-#        self.install_app(AdminToolsConfig)
+        self.install_app(AdminToolsConfig)
         self.install_app(DebugToolbarConfig)
 
 DevProjectConfig().export_settings(globals())
