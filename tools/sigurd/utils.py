@@ -9,5 +9,5 @@ def get_class_by_path( kls ):
     module = ".".join(parts[:-1])
     m = __import__( module )
     for comp in parts[1:]:
-        m = getattr(m, comp)            
+        m = getattr(m, comp)
     return m

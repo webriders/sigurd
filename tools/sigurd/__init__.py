@@ -1,6 +1,9 @@
+from __future__ import print_function
+
 import inspect
 from sigurd import utils
 from sigurd.exceptions import ConfigurationError
+
 
 class Config(object):
     """
@@ -38,15 +41,27 @@ class BaseAppConfig(Config):
     Django Application config.
     Contains settings and urls.
     """
+    MIDDLEWARE_CLASSES_KEY = 'MIDDLEWARE_CLASSES'
+    CONTEXT_PROCESSORS_KEY = 'TEMPLATE_CONTEXT_PROCESSORS'
+    INSTALLED_APPS_KEY = 'INSTALLED_APPS'
 
     def __init__(self, main_settings):
         self.main_settings = main_settings
-        self.init_settings()
 
     def init_settings(self):
         """
         Init your settings.
         Override this method if some of your settings are dependant on main_settings (MEDIA_URL, etc.)
+        """
+        pass
+
+    def init_extensions(self):
+        """
+        Override this method to install your custom django extensions.
+         - app
+         - middleware;
+         - context processors;
+         - ets.
         """
         pass
 
@@ -90,33 +105,29 @@ class BaseAppConfig(Config):
         at = None
         if prepend:
             at = 0
-        self.extend_main_list_setting('INSTALLED_APPS', app_name, at)
+        self.extend_main_list_setting(self.INSTALLED_APPS_KEY, app_name, at)
+        print(" + app: '%s'" % app_name)
 
     def install_middleware_class(self, middleware, prepend=False):
         at = None
         if prepend:
             at = 0
-        self.extend_main_list_setting('MIDDLEWARE_CLASSES', middleware, at)
+        self.extend_main_list_setting(self.MIDDLEWARE_CLASSES_KEY, middleware, at)
+        print(" + middleware: '%s'" % middleware)
 
     def install_context_processor(self, context_processor, prepend=False):
         at = None
         if prepend:
             at = 0
-        self.extend_main_list_setting('TEMPLATE_CONTEXT_PROCESSORS', context_processor, at)
+        self.extend_main_list_setting(self.CONTEXT_PROCESSORS_KEY, context_processor, at)
+        print(" + context processor: '%s'" % context_processor)
 
-    def install_settings(self):
+    def inject(self):
+        self.init_settings()
+        self.init_extensions()
         dict = self.get_settings_dict()
-        for key, value in dict.itervalues():
+        for key, value in dict.items():
             self.set_main_setting(key, value)
-
-    def install(self):
-        """
-        Install all app settings into the main_settings.
-        Override this method if you want to add middlewares, context_processors, etc.
-        Don't forget to call self.install_settings() if you want to add your custom app conf settings
-        """
-        self.install_app()
-        self.install_settings()
 
     def get_urls(self):
         pass # TODO
@@ -170,14 +181,20 @@ class BaseProjectConfig(GlobalProjectConfig):
         if inspect.isclass(app_config):
             pass
         elif isinstance(app_config, basestring):
-            app_config = utils.get_class_by_path(app_config)
+            try:
+                app_config = utils.get_class_by_path(app_config)
+            except (ImportError, AttributeError), e:
+                raise ConfigurationError(
+                    "Project config[%s] : Cannot install application config [%s] because of error: %s " % (
+                        self.__class__.__name__, str(app_config), str(e)))
         else:
-            raise ConfigurationError("Project config[%s] : Cannot install application config: [%s]" % (
-            self.__class__.__name__, str(app_config)))
+            raise ConfigurationError("Project config[%s] : Cannot install application config, unsupported type [%s]" % (
+                self.__class__.__name__, str(app_config)))
 
         app = app_config(self)
-        app.install_setttings()
-        app.install()
+        print("[%s] processing: " % (app.__class__.__name__))
+        app.inject()
+        print(" = done: %s \n" % (app.__class__.__name__))
 
     def export_settings(self, globals):
         """
@@ -185,6 +202,11 @@ class BaseProjectConfig(GlobalProjectConfig):
         Used to get active profile from conf.settings anythere in django code.
         Example usage: <project_root>.urls.py - to install apps urls.
         """
-        super(BaseProjectConfig, self).export_settings(globals)
+        print("---------------------------------------")
+        print("[SIGURD] Starting project configuration")
+        print("---------------------------------------\n")
         self.install_apps()
+        super(BaseProjectConfig, self).export_settings(globals)
         globals[self.ACTIVE_PROFILE_GLOBALS_KEY] = self
+        print("-- [SIGURD] Finished configuration --")
+        print("---------------------------------------\n")

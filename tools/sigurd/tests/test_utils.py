@@ -6,9 +6,6 @@ class TestUtils(TestCase):
 
     def test_get_class_by_path(self):
         prod_web_config = utils.get_class_by_path("sigurd.tests.configs.project_complex.ProdWebConfig")
-        print str(ProdWebConfig)
-        print str(prod_web_config)
-
         self.assertEquals(ProdWebConfig, prod_web_config)
 
     def test_get_class_by_path_invalid_path(self):

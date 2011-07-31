@@ -5,20 +5,22 @@ class HaystackConfig(sigurd.BaseAppConfig):
     HAYSTACK_SITECONF = 'conf.haystack.fulltext_search'
     HAYSTACK_SEARCH_ENGINE = 'whoosh'
 
-    def install_settings(self):
+    def init_settings(self):
+#        self.HAYSTACK_WHOOSH_PATH = os.path.join(self.get_main_setting("PROJECT_ROOT"), 'search_index')
         self.HAYSTACK_WHOOSH_PATH = os.path.join(self.main_settings.PROJECT_ROOT, 'search_index')
 
-    def install(self):
+    def init_extensions(self):
         self.install_app("haystack")
 
 class BaseWebConfig(sigurd.BaseAppConfig):
+    #app_name = "web"
+
     WEBSERVICE_LINK = "http://rambler.com.ua"
 
-    def __init__(self, main_setting):
-        super(BaseWebConfig).__init__(main_setting)
+    def init_settings(self):
         self.MY_CONSTANT = "MAMBOOO"
 
-    def install(self):
+    def init_extensions(self):
         self.install_app("web")
         self.install_middleware_class("web.middleware.RegionSelectorMiddleware", prepend=True)
         self.install_context_processor("web.context_processors.add_cities")
@@ -68,6 +70,9 @@ class TestComplexProjectConfig(sigurd.BaseProjectConfig):
     # If you set this to False, Django will not format dates, numbers and
     # calendars according to the current locale
     USE_L10N = True
+
+    PROJECT_ROOT = "/home/demo/app/"
+
 
     # Absolute filesystem path to the directory that will hold user-uploaded files.
     # Example: "/home/media/media.lawrence.com/media/"
@@ -149,5 +154,5 @@ class TestComplexProjectConfig(sigurd.BaseProjectConfig):
 
     def install_apps(self):
         self.install_app(HaystackConfig)
-        self.install_app("sigurd.tests.admin_tools.AdminToolsConfig")
+        self.install_app("sigurd.tests.configs.project_complex.BaseWebConfig")
 
