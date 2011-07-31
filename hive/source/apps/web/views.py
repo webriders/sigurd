@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView, CreateView, RedirectVie
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.http import Http404
-from web.models import Application, ApplicationConfig
+from web.models import Application, ApplicationConfig, DownloadsInfo
 from web.forms import ApplicationConfigForm
 
 
@@ -62,3 +62,22 @@ class ConfigDownloader(RedirectView):
         return config.archive.url
 
 config_downloader = ConfigDownloader.as_view()
+
+
+class DownloadsView(TemplateView):
+    template_name = 'pages/downloads.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DownloadsView, self).get_context_data(**kwargs)
+
+        objects = DownloadsInfo.objects.all()
+        if objects:
+            download = objects[0]
+
+            context['download_description'] = download.description
+            context['download_url'] = download.archive.url
+            context['download_name'] = path.split(download.archive.name)[1]
+
+        return context
+
+downloads = DownloadsView.as_view()

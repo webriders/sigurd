@@ -39,3 +39,15 @@ class ApplicationConfig(models.Model):
 
     def __unicode__(self):
         return self.title or self.slug
+
+
+class DownloadsInfo(models.Model):
+    description = models.TextField(max_length=2048, verbose_name=u'Description')
+    archive = models.FileField(upload_to='downloads/', verbose_name=u'Archive')
+
+    def __unicode__(self):
+        return u'Edit Downloads info'
+
+    class Meta:
+        verbose_name = u'Downloads Info'
+        verbose_name_plural = verbose_name

@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+    <h1 id="downloads_title"> Downloads </h1>
+
+    {% if download_description %}
+
+        <div class="downloads-description">
+            {{ download_description|safe }}
+        </div>
+
+        <div class="downloads-url">
+            <a href="{{ download_url }}"> Download {{ download_name }} </a>
+        </div>
+
+    {% else %}
+        There are no downloads yet.
+    {% endif %}
+
+{% endblock %}
