@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Application(models.Model):
-    slug = models.SlugField(max_length=64, verbose_name=u'Slug')
+    slug = models.SlugField(max_length=64, unique=True, verbose_name=u'Slug')
     url = models.URLField(max_length=256, blank=True, null=True, verbose_name=u'URL')
     published = models.BooleanField(blank=True, verbose_name='Visible on apps page')
 
@@ -27,6 +27,9 @@ class ApplicationConfig(models.Model):
     archive = models.FileField(upload_to='.', verbose_name=u'Archive with config', help_text="Only .tar.gz and .tgz is supported for now")
     downloads = models.IntegerField(default=0, verbose_name=u"Downloads count")
     is_master = models.BooleanField(blank=True, verbose_name=u'Is master (default)')
+
+    class Meta:
+        unique_together = ("application", "slug")
 
     def save(self, *args, **kwargs):
         configs = ApplicationConfig.objects.filter(application=self.application, is_master=True)
