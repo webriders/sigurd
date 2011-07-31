@@ -18,6 +18,7 @@ ul.features-list li p {
     padding: 10px;
     font-size: 0.9em;
     overflow: hidden;
+    position: relative;
 }
 
 .short-overview h2 {
@@ -62,6 +63,19 @@ ul.features-list li p {
     border: none;
     cursor: pointer;
     border-radius: 6px;
+}
+
+.short-overview .less-overviews-button {
+    background: gray;
+    color: white;
+    padding: 3px 6px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
 }
 
 /* Configs list */
