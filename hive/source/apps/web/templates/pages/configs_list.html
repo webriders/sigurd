@@ -1,24 +1,19 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-
-    <h1 id="applications_title"> Configs </h1>
+    <h1 id="applications_title">Django Application Configs</h1>
 
     {% for app in applications_list %}
-
         <div class="application">
-
             {% with app.get_configs as config %}
                 {% if config %}
-
                     <a href="{{ app.url }}">{{ app.slug }}</a>
 
                     {% for config in app.get_configs %}
                         <div class="app-config">
-
                             {% if config.is_master %}
                                 <div class="config-is-master">
-                                    Recomended
+                                    Master config
                                 </div>
                             {% endif %}
 
@@ -36,13 +31,11 @@
 
                             <div class="config-author-name">
                                 <span> Supported versions: </span>
-
                                 {% if config.supported_versions %}
                                     {{ config.supported_versions }}
                                 {% else %}
                                     unknown
                                 {% endif %}
-
                             </div>
 
                             {% if config.author_name %}
@@ -61,24 +54,20 @@
 
                             <div class="config-tarball">
                                 <span> Tarball: </span>
-                                <a href="{% url config_downloader app_slug=app.slug config_slug=config.slug %}">
-                                    Download </a>
-
+                                <a href="{% url download_config app_slug=app.slug config_slug=config.slug %}">
+                                    Download
+                                </a>
                             </div>
 
                             <div class="download-count">
-                                <span> Download count: </span>
+                                <span>Download count:</span>
                                 {{ config.downloads }}
                             </div>
 
                         </div>
                     {% endfor %}
-
                 {% endif %}
             {% endwith %}
-
         </div>
-
     {% endfor %}
-
 {% endblock %}

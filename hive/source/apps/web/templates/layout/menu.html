@@ -1,11 +1,36 @@
 <nav class="main-site-nav">
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="{% url applications_list %}">Configs</a></li>
-        <li><a href="{% url add_app_config %}">Add Config</a></li>
+        <li><a href="{% url configs_list %}">Configs</a></li>
+        <li><a href="{% url add_config %}">Add Config</a></li>
         <li><a href="{% url downloads %}">Downloads</a></li>
 
     </ul>
     <p class="hint-text">Please, go to <a href="http://github.com/webriders/sigurd">our GitHub</a> to see <strong>the
         docs</strong> for now.</p>
+
+
 </nav>
+
+<div class="social-buttons">
+    <g:plusone size="medium"></g:plusone>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a>
+
+
+    <div id="fb-root"></div>
+    <script src="http://connect.facebook.net/en_US/all.js#appId=259365007412856&amp;xfbml=1"></script>
+    <fb:like
+            layout="button_count"
+            show_faces="false"
+            width="140" font="">
+    </fb:like>
+
+
+    <script type="text/javascript" src=""></script>
+    <script type="text/javascript">
+        $(function() {
+            $.getScript('https://apis.google.com/js/plusone.js');
+            $.getScript('http://platform.twitter.com/widgets.js');
+        });
+    </script>
+</div>

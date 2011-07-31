@@ -1,21 +1,20 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-
     <h1 id="downloads_title"> Downloads </h1>
 
-    {% if download_description %}
+    {% for item in downloads %}
+        {{ item.title }}
 
         <div class="downloads-description">
-            {{ download_description|safe }}
+            {{ item.description|safe }}
         </div>
 
         <div class="downloads-url">
-            <a href="{{ download_url }}"> Download {{ download_name }} </a>
+            <a href="{{ item.archive.url }}"> Download {{ item.archive.url }} </a>
         </div>
-
-    {% else %}
+    {% empty %}
         There are no downloads yet.
-    {% endif %}
+    {% endfor %}
 
 {% endblock %}

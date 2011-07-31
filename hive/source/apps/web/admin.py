@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django.contrib import admin
-from web.models import Application, ApplicationConfig, DownloadsInfo
+from web.models import Application, ApplicationConfig, DownloadsItem
 
 
 class ApplicationAdmin(admin.ModelAdmin):
@@ -11,13 +11,13 @@ class ApplicationAdmin(admin.ModelAdmin):
 
 class ApplicationConfigAdmin(admin.ModelAdmin):
     save_on_top = True
-    list_display = ('title', 'application', 'slug', 'views', 'downloads', 'published', 'is_master',)
+    list_display = ('title', 'application', 'slug', 'downloads', 'published', 'is_master',)
     list_editable = ('published',)
 
 
-class DownloadsInfoAdmin(admin.ModelAdmin):
+class DownloadsItemAdmin(admin.ModelAdmin):
     save_on_top = True
 
-admin.site.register(DownloadsInfo, DownloadsInfoAdmin)
+admin.site.register(DownloadsItem, DownloadsItemAdmin)
 admin.site.register(Application, ApplicationAdmin)
 admin.site.register(ApplicationConfig, ApplicationConfigAdmin)
