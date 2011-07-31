@@ -1,1 +1,0 @@
-VERSION = (0, 1, 'django-dash-alpha')
