@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, CreateView
+from django.core.urlresolvers import reverse
 from web.models import Application
 from web.forms import ApplicationConfigForm
 
@@ -17,17 +18,17 @@ class ApplicationsList(ListView):
 applications_list = ApplicationsList.as_view()
 
 
-class AppConfigDetail(DetailView):
-    template_name = 'pages/app_config_detail.html'
+class AddAppConfig(CreateView):
+    template_name = 'pages/add_app_config.html'
+    form_class = ApplicationConfigForm
 
-    def get_object(self, queryset=None):
-        return None
-    
-    def get_context_data(self, **kwargs):
-        context = super(AppConfigDetail, self).get_context_data(**kwargs)
+    def get_success_url(self):
+        return reverse('add_app_config_success')
 
-        context['app_config_form'] = ApplicationConfigForm()
+add_app_config = AddAppConfig.as_view()
 
-        return context
 
-add_app_config = AppConfigDetail.as_view()
+class AddAppConfigSuccess(TemplateView):
+    template_name = 'pages/add_app_config_success.html'
+
+add_app_config_success = AddAppConfigSuccess.as_view()
