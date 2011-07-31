@@ -23,7 +23,7 @@ class DevProjectConfig(MainProjectConfig):
         self.install_app(HaystackConfig)
         self.install_app(SouthConfig)
         self.install_app("conf.ext_apps.admin_tools.config.AdminToolsConfig")
-        self.install_app(DebugToolbarConfig)
+#        self.install_app(DebugToolbarConfig)
         self.install_app(CeleryConfig)
         self.install_app(RegistrationConfig)
 
