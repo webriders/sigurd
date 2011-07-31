@@ -64,7 +64,7 @@
 
                     <div class="config-tarball">
                         <span> Tarball: </span>
-                      <a href="{% url config_downloader config_id=config.id %}"> Download </a>
+                      <a href="{% url config_downloader app_slug=app.slug config_slug=config.slug %}"> Download </a>
 
                     </div>
 
