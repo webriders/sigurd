@@ -6,11 +6,14 @@ ul.features-list li p {
     font-style: italic;
 }
 
+.home-side-block {
+    float: right;
+    width: 380px;
+}
+
 /*---------------------------------------- "Short Overview" block on Homepage ----------------------------------------*/
 .short-overview {
-    float: right;
     width: 360px;
-    margin-left: 16px;
     margin-bottom: 16px;
     background: #cdcdcd;
     border-radius: 6px;
