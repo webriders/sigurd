@@ -11,7 +11,6 @@ class TestProjectConfig(TestCase):
         project_config.export_settings(globals_dict)
 
         self.assertEqual(globals_dict["TEMPLATE_DIRS"], ())
-        self.assertEqual(globals_dict[BaseProjectConfig.ACTIVE_PROFILE_GLOBALS_KEY], project_config)
 
         # check app HAYSTACK
         self.assertTrue("haystack" in globals_dict["INSTALLED_APPS"])
@@ -44,13 +43,8 @@ class TestProjectConfig(TestCase):
         self.assertEqual(ctxs[len(ctxs) - 1], "web.context_processors.add_cities" )
 
         
-    def test_profiles(self):
-        pass
-        
-
-
     def test_export_globals_set_active_profile(self):
         project_config = TestComplexProjectConfig()
         globals_dict = globals()
         project_config.export_settings(globals_dict)
-        self.assertEquals(globals_dict[BaseProjectConfig.ACTIVE_PROFILE_GLOBALS_KEY], project_config)
+        self.assertEquals(globals_dict[BaseProjectConfig._ACTIVE_PROFILE_SETTING_NAME], project_config)

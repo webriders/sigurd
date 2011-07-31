@@ -28,11 +28,11 @@ class BaseAppConfig(Config):
          - app
          - middleware;
          - context processors;
-         - ets.
+         - etc.
         """
         pass
 
-    def init_urls(self, main_url_patterns):
+    def init_urls(self, urlpatterns):
         """
         Override this method to install your custom application URL.
         You can do this using self.install_url()
@@ -96,18 +96,21 @@ class BaseAppConfig(Config):
         self.extend_main_list_setting(self.CONTEXT_PROCESSORS_KEY, context_processor, at)
         print(" + context processor: '%s'" % context_processor)
 
-    def inject(self):
+    def install_url(self, urlpatterns, url_regexp_pattern, path_to_urls, prepend=False):
+        pattern = url(url_regexp_pattern, include(path_to_urls))
+        if prepend:
+            urlpatterns.insert(0, pattern)
+        else:
+            urlpatterns.append(pattern)
+
+    def _inject_settings(self):
         """
         Used by project config to build all django settings
         """
         self.init_settings()
         self.init_extensions()
+
         dict = self.get_settings_dict()
         for key, value in dict.items():
             self.set_main_setting(key, value)
 
-    def install_url(self, main_urls, url_regexp_pattern, path_to_urls, prepend=False):
-        if prepend:
-            main_urls.insert(0, url(url_regexp_pattern, include(path_to_urls)))
-        else:
-            main_urls.append(url(url_regexp_pattern, include(path_to_urls)))

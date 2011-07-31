@@ -1,6 +1,8 @@
 from __future__ import print_function
 
 import inspect
+from django.conf.urls.defaults import patterns
+from sigurd.app_config import BaseAppConfig
 from sigurd.base import Config
 from sigurd import utils
 from sigurd.exceptions import ConfigurationError
@@ -16,12 +18,14 @@ class GlobalProjectConfig(Config):
 
 
 class BaseProjectConfig(GlobalProjectConfig):
-    ACTIVE_PROFILE_GLOBALS_KEY = "ACTIVE_PROFILE"
+    _ACTIVE_PROFILE_SETTING_NAME = "active_profile"
 
     def __init__(self):
-        custom_settings = self.get_settings_dict()
         self.app_configs = []
+        # Backup custom settings (because they will be overridden by globals)
+        custom_settings = self.get_settings_dict()
         super(BaseProjectConfig, self).__init__()
+        # Restore custom settings
         for key, value in custom_settings.iteritems():
             setattr(self, key, value)
 
@@ -35,36 +39,43 @@ class BaseProjectConfig(GlobalProjectConfig):
         """
         pass
 
-    def install_app_urls(self, urlpatterns):
+    def install_app_urls(self, urlpatterns=None):
         """
         Install app urls to given URL patterns.
         Used to update project URL patterns.
         """
+        if not urlpatterns:
+            urlpatterns = patterns('')
+
         for app in self.app_configs:
             app.init_urls(urlpatterns)
+
+        return urlpatterns
 
     def install_app(self, app_config):
         """
         Installs application config.
         app_config can be class or string with python path to class.
         """
-
-        if inspect.isclass(app_config):
-            pass
-        elif isinstance(app_config, basestring):
+        if isinstance(app_config, basestring):
             try:
                 app_config = utils.get_class_by_path(app_config)
             except (ImportError, AttributeError), e:
                 raise ConfigurationError(
-                    "Project config[%s] : Cannot install application config [%s] because of error: %s " % (
+                    "Project config[%s]: Cannot install application config [%s] because of error: %s " % (
                         self.__class__.__name__, str(app_config), str(e)))
-        else:
-            raise ConfigurationError("Project config[%s] : Cannot install application config, unsupported type [%s]" % (
+        elif not inspect.isclass(app_config):
+            raise ConfigurationError("Project config[%s]: Cannot install application config, unsupported type [%s]" % (
                 self.__class__.__name__, str(app_config)))
 
+        if not issubclass(app_config, BaseAppConfig):
+            raise ConfigurationError("Project config[%s]: error in [%s], application config must be subclass of %s" % (
+                self.__class__.__name__, str(app_config), BaseAppConfig.__name__))
+
         app = app_config(self)
+
         print("[%s] processing: " % (app.__class__.__name__))
-        app.inject()
+        app._inject_settings()
         self.app_configs.append(app)
         print(" = done: %s \n" % (app.__class__.__name__))
 
@@ -78,7 +89,7 @@ class BaseProjectConfig(GlobalProjectConfig):
         print("[SIGURD] Starting project configuration")
         print("---------------------------------------\n")
         self.install_apps()
-        super(BaseProjectConfig, self).export_settings(globals)
-        globals[self.ACTIVE_PROFILE_GLOBALS_KEY] = self
+        globals.update(self.get_settings_dict())
+        globals[self._ACTIVE_PROFILE_SETTING_NAME] = self
         print("-- [SIGURD] Finished configuration --")
         print("---------------------------------------\n")
