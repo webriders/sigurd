@@ -79,29 +79,23 @@ ul.features-list li p {
 }
 
 /* Configs list */
-.add-app-config  {
-    border: 2px solid gray;
-    border-radius: 5px;
+#applications_title {
+    font-size: 25px;
     margin-bottom: 20px;
-    padding: 5px;
-    background-color: #ffffcc;
-    width: 90px;
-    cursor: pointer;
 }
-
-.add-app-config a {
-    cursor: pointer;
-    color: #cc3300;
-    text-decoration: none;
-}
-
 
 .application {
     margin-bottom: 60px;
 }
 
+.application a {
+    font-size: 20px;
+}
+
+
 .app-config {
     border: 1px solid;
+    border-radius: 15px;
     padding: 10px;
     margin: 30px;
 }

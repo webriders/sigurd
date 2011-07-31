@@ -3,19 +3,16 @@ import sigurd
 class BaseWebConfigBase(sigurd.BaseAppConfig):
     WEBSERVICE_LINK = "http://rambler.com.ua"
 
-    def __init__(self, main_setting):
-        super(BaseWebConfigBase).__init__(main_setting)
+    def init_settings(self):
         self.MY_CONSTANT = "MAMBOOO"
 
-    def install(self):
+    def init_extensions(self):
         self.install_app("web")
-        self.install_middleware("web.middleware.RegionSelectorMiddleware", prepend=True)
+        self.install_middleware_class("web.middleware.RegionSelectorMiddleware", prepend=True)
         self.install_context_processor("web.context_processors.add_cities")
 
-    def install_urls(self, main_urls):
+    def init_urls(self, main_urls):
         self.install_url(main_urls, r'^$', 'web.urls')
-
-
 
 class ProdWebConfig(BaseWebConfigBase):
     WEBSERVICE_LINK = "http://yandex.com.ua"

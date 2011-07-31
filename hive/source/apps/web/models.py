@@ -18,7 +18,7 @@ class ApplicationConfig(models.Model):
     published = models.BooleanField(blank=True, verbose_name='Visible on configs page')
     application = models.ForeignKey(Application, verbose_name=u'Application')
     title = models.CharField(max_length=256, verbose_name=u'Config name')
-    description = models.TextField(max_length=3096, blank=True, null=True, verbose_name=u'Ddescription')
+    description = models.TextField(max_length=3096, blank=True, null=True, verbose_name=u'Description')
     slug = models.SlugField(max_length=64, verbose_name=u'Slug')
     author_name = models.CharField(max_length=128, blank=True, null=True, verbose_name=u'Author name')
     author_email = models.EmailField(max_length=128, blank=True, null=True, verbose_name=u'Author e-mail')

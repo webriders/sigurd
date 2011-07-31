@@ -17,4 +17,4 @@ urlpatterns = patterns('',
 )
 
 from django.conf import settings
-urlpatterns = settings.ACTIVE_PROFILE.install_app_urls(urlpatterns)
+urlpatterns = settings.active_profile.install_app_urls(urlpatterns)
