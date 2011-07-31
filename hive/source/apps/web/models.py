@@ -30,25 +30,22 @@ class ApplicationConfig(models.Model):
 
     class Meta:
         unique_together = ("application", "slug")
-
-    def save(self, *args, **kwargs):
-        configs = ApplicationConfig.objects.filter(application=self.application, is_master=True)
-        if self.pk:
-            configs.exclude(pk=self.pk)
-        configs.update(is_master=False)
-        super(ApplicationConfig, self).save(*args, **kwargs)
-
+    
     def __unicode__(self):
         return self.title or self.slug
 
 
-class DownloadsItem(models.Model):
-    title = models.CharField(max_length=256)
-    description = models.TextField(max_length=2048)
+class DownloadItem(models.Model):
+    title = models.CharField(max_length=256, blank=True, null=True)
+    description = models.TextField(max_length=2048, blank=True, null=True)
     archive = models.FileField(upload_to='downloads/')
 
+    def get_archive_name(self):
+        import os.path
+        return os.path.basename(self.archive.name)
+
     def __unicode__(self):
-        return u'Edit Downloads'
+        return self.title or self.archive.url
 
     class Meta:
         verbose_name = u'Downloads'

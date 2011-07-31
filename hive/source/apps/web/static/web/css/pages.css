@@ -78,95 +78,183 @@ ul.features-list li p {
     display: none;
 }
 
-/* Configs list */
-#applications_title, #downloads_title {
-    font-size: 25px;
-    margin-bottom: 20px;
+/*=================================================== Configs list ===================================================*/
+.configs-list {
 }
 
-.application {
-    margin-bottom: 60px;
-}
-
-.application a {
-    font-size: 20px;
-}
-
-
-.app-config {
-    border: 1px solid;
-    border-radius: 15px;
-    padding: 10px;
-    margin: 30px;
-}
-
-.app-config span {
-    font-weight: bold;
-}
-
-.app-config .config-is-master {
-    color: red;
-}
-
-.app-config .config-title {
-
-}
-
-.app-config .config-description {
-
-}
-
-.app-config .config-author-name {
-
-}
-
-.app-config .config-author-email {
-
-}
-
-.add-config-form {
-    margin-bottom: 50px;
-}
-
-.app-config-form-field {
+.configs-list > h1 {
+    font-size: 2em;
     margin-bottom: 10px;
-    margin-left: 50px;
-
 }
 
-.app-config-form-field-error li {
-    color: red;
+.configs-list > ul {
     list-style: none;
 }
 
-
-.app-config-form-field label {
-    display: block;
-
-}
-.app-config-form-field label.required {
-    font-weight: bold;
-
+.configs-list > ul > li {
+    margin: 0 0 16px;
 }
 
-
-.downloads-description {
-    margin: 10px;
-    border: 1px solid;
-    border-radius: 15px;
-    padding: 20px;
+.configs-list > ul > li > h2 {
+    font-size: 1.8em;
+    color: #c9013e;
+    margin-bottom: 16px;
 }
 
-.downloads-url {
-    margin-top: 20px;
-    padding: 20px;
+.configs-list > ul > li > h2 a {
+    color: #c9013e;
 }
 
-.downloads-url a {
-    border: 1px solid;
-    border-radius: 10px;
-    text-decoration: none;
-    padding: 10px;
+.configs-list > ul > li > ul {
+    margin-left: 40px;
+    list-style: none;
+    width: 700px;
+}
+
+.configs-list > ul > li > ul > li {
+    margin: 0 0 20px;
+}
+
+.configs-list ul li:last-child {
+    margin-bottom: 0;
+}
+
+
+.configs-list .app-config {
+    background: #2e3c53 url('../images/menu-bg.gif') repeat;
+    border-radius: 6px;
+    font-size: 0.8em;
+    position: relative;
+}
+
+.configs-list .app-config > .config-title {
+    line-height: 2em;
+    height: 2em;
+    background: #2e3c53 url('../images/menu-light-bg.gif') repeat;
+    padding: 0 8px;
+    font-size: 1.2em;
+    border-radius: 6px 6px 0 0;
+}
+
+.configs-list .app-config .config-author,
+.configs-list .app-config .config-description,
+.configs-list .app-config .supported-versions {
+    padding: 6px 8px;
+    border-bottom: 1px dashed #757575;
+}
+
+.configs-list .app-config .is-master {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    color: #e72034;
+    font-size: 1em;
+    line-height: 2em;
+    height: 2em;
+}
+
+.configs-list .app-config .is-master span {
     color: white;
-    background-color: #c9013e;
+}
+
+.configs-list .app-config .download-archive {
+    padding: 8px;
+    overflow: hidden;
+}
+
+.configs-list .app-config .download-archive a {
+    display: block;
+    text-decoration: none;
+    font-size: 1.4em;
+    background: #101e39 url('../images/download-arrow.png') 8px center no-repeat;
+    font-weight: bold;
+    padding-left: 32px;
+    padding-right: 8px;
+    line-height: 42px;
+    height: 42px;
+    text-transform: uppercase;
+    float: left;
+    border-radius: 6px;
+    color: #ddd;
+    margin-right: 10px;
+}
+
+.configs-list .app-config .download-archive a:hover {
+    background-color: #ddd;
+    color: #101e39;
+}
+
+.configs-list .app-config .download-archive .downloads-counter {
+    display: block;
+    float: left;
+    line-height: 42px;
+    height: 42px;
+}
+
+/*-------------------------------------------------- Downloads list --------------------------------------------------*/
+.downloads-list {
+}
+
+.downloads-list > h1 {
+    font-size: 2em;
+    margin-bottom: 16px;
+}
+
+.downloads-list ul {
+    margin-left: 20px;
+    list-style: none;
+    width: 700px;
+}
+
+.downloads-list ul li.download-item {
+    background: #2e3c53 url('../images/menu-bg.gif') repeat;
+    border-radius: 6px;
+    font-size: 0.8em;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.downloads-list ul li.download-item:last-child {
+    margin-bottom: 0;
+}
+
+.downloads-list ul li.download-item .item-title {
+    line-height: 2em;
+    height: 2em;
+    background: #2e3c53 url('../images/menu-light-bg.gif') repeat;
+    padding: 0 8px;
+    font-size: 1.2em;
+    border-radius: 6px 6px 0 0;
+}
+
+.downloads-list ul li.download-item .item-description {
+    padding: 6px 8px;
+    border-bottom: 1px dashed #757575;
+}
+
+.downloads-list ul li.download-item .download-file {
+    padding:  8px;
+    overflow: hidden;
+}
+
+.downloads-list ul li.download-item .download-file a {
+    display: block;
+    text-decoration: none;
+    font-size: 1.4em;
+    background: #101e39 url('../images/download-arrow.png') 8px center no-repeat;
+    font-weight: bold;
+    padding-left: 32px;
+    padding-right: 8px;
+    line-height: 42px;
+    height: 42px;
+    text-transform: uppercase;
+    float: left;
+    border-radius: 6px;
+    color: #ddd;
+    margin-right: 10px;
+}
+
+.downloads-list ul li.download-item .download-file a:hover {
+    background-color: #ddd;
+    color: #101e39;
 }
