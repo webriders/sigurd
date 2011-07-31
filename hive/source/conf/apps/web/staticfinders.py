@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 class StaticRootFinder(BaseStorageFinder):
-    storage = FileSystemStorage(settings.PROJECT_STATIC_ROOT, settings.STATIC_URL)
+    storage = FileSystemStorage(settings.INITIAL_STATIC_ROOT, settings.STATIC_URL)
 
 class MediaRootFinder(BaseStorageFinder):
-    storage = FileSystemStorage(settings.PROJECT_MEDIA_ROOT, settings.MEDIA_URL)
+    storage = FileSystemStorage(settings.INITIAL_MEDIA_ROOT, settings.MEDIA_URL)

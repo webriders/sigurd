@@ -141,7 +141,8 @@ PROJECT_ROOT = os.path.abspath('..')
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-PROJECT_MEDIA_ROOT = MEDIA_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, 'media'))
+MEDIA_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, 'media'))
+INITIAL_MEDIA_ROOT = MEDIA_ROOT
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -153,7 +154,7 @@ MEDIA_URL = '/media/'
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, 'static'))
-PROJECT_STATIC_ROOT = STATIC_ROOT
+INITIAL_STATIC_ROOT = STATIC_ROOT
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
