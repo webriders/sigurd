@@ -45,6 +45,7 @@ a {
     font-size: 1em;
     line-height: 3.5em;
     margin: 0 0 0 10px;
+    font-weight: bold;
 }
 
 /*-------------------------------------------------- Big ADD button --------------------------------------------------*/
@@ -84,13 +85,24 @@ nav.main-site-nav {
 
 nav.main-site-nav ul {
     float: left;
-    border-radius: 4px;
-    background: #2e3c53 url('../images/menu-bg.gif') repeat;
+    position: relative;
+    z-index: 2;
 }
 
 nav.main-site-nav li {
-    padding: 10px;
+    padding: 0 10px;
+    height: 36px;
+    line-height: 36px;
     float: left;
+    background: #2e3c53 url('../images/menu-bg.gif') repeat;
+}
+
+nav.main-site-nav li:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+nav.main-site-nav li:last-child {
+    border-radius: 0 6px 6px 0;
 }
 
 nav.main-site-nav li a {
@@ -99,8 +111,26 @@ nav.main-site-nav li a {
     text-shadow: 0 1px 0 #000;
 }
 
+nav.main-site-nav li:hover {
+    background-image: url('../images/menu-light-bg.gif');
+}
+
 nav.main-site-nav li:hover a {
-    color: #c9013e;
+    color: #f03142;
+    text-shadow: none;
+}
+
+nav.main-site-nav p.hint-text {
+    font-size: 0.9em;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 10px 0 20px;
+    float: left;
+    background: #2e3c53 url('../images/menu-light-bg.gif') repeat;
+    position: relative;
+    z-index: 1;
+    left: -6px;
+    border-radius: 0 6px 6px 0;
 }
 
 /*----------------------------------------------------- Content ------------------------------------------------------*/
