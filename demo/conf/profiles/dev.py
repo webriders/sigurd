@@ -36,5 +36,5 @@ class DevProjectConfig(MainProjectConfig):
         }
     }
 
-
-DevProjectConfig().export_settings(globals())
+ACTIVE_PROFILE = DevProjectConfig()
+ACTIVE_PROFILE.export_settings(globals())

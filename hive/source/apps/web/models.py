@@ -23,7 +23,7 @@ class ApplicationConfig(models.Model):
     author_name = models.CharField(max_length=128, blank=True, null=True, verbose_name=u'Author name')
     author_email = models.EmailField(max_length=128, blank=True, null=True, verbose_name=u'Author e-mail')
     supported_versions = models.CharField(max_length=128, blank=True, null=True, verbose_name=u'Supported versions')
-    file_name = models.FileField(upload_to='.', verbose_name=u'Tarball with configuration')
+    archive = models.FileField(upload_to='.', verbose_name=u'Tarball with configuration', default='')
     views = models.IntegerField(default=0, verbose_name=u"Views count")
     downloads = models.IntegerField(default=0, verbose_name=u"Downloads count")
     is_master = models.BooleanField(blank=True, verbose_name=u'Is master (default)')

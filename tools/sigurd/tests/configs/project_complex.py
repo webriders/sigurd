@@ -1,11 +1,42 @@
-from conf.apps.web.config import ProdWebConfig
-from conf.ext_apps.celery.config import CeleryConfigBase
-from conf.ext_apps.haystack.config import HaystackConfigBase
-from conf.ext_apps.registration.config import RegistrationConfigBase
-from conf.ext_apps.south.config import SouthConfigBase
+import os
 import sigurd
 
-class MainProjectConfig(sigurd.BaseProjectConfig):
+class HaystackConfig(sigurd.BaseAppConfig):
+    HAYSTACK_SITECONF = 'conf.haystack.fulltext_search'
+    HAYSTACK_SEARCH_ENGINE = 'whoosh'
+
+    def init_settings(self):
+#        self.HAYSTACK_WHOOSH_PATH = os.path.join(self.get_main_setting("PROJECT_ROOT"), 'search_index')
+        self.HAYSTACK_WHOOSH_PATH = os.path.join(self.main_settings.PROJECT_ROOT, 'search_index')
+
+    def init_extensions(self):
+        self.install_app("haystack")
+
+class BaseWebConfig(sigurd.BaseAppConfig):
+    #app_name = "web"
+
+    WEBSERVICE_LINK = "http://rambler.com.ua"
+
+    def init_settings(self):
+        self.MY_CONSTANT = "MAMBOOO"
+
+    def init_extensions(self):
+        self.install_app("web")
+        self.install_middleware_class("web.middleware.RegionSelectorMiddleware", prepend=True)
+        self.install_context_processor("web.context_processors.add_cities")
+
+    def install_urls(self, main_urls):
+        self.install_url(main_urls, r'^$', 'web.urls')
+
+
+class ProdWebConfig(BaseWebConfig):
+    WEBSERVICE_LINK = "http://yandex.com.ua"
+
+class DevWebConfig(BaseWebConfig):
+    WEBSERVICE_LINK = "http://google.com.ua"
+
+
+class TestComplexProjectConfig(sigurd.BaseProjectConfig):
     # Django settings for demo project.
 
     DEBUG = True
@@ -39,6 +70,9 @@ class MainProjectConfig(sigurd.BaseProjectConfig):
     # If you set this to False, Django will not format dates, numbers and
     # calendars according to the current locale
     USE_L10N = True
+
+    PROJECT_ROOT = "/home/demo/app/"
+
 
     # Absolute filesystem path to the directory that will hold user-uploaded files.
     # Example: "/home/media/media.lawrence.com/media/"
@@ -119,12 +153,6 @@ class MainProjectConfig(sigurd.BaseProjectConfig):
     )
 
     def install_apps(self):
-        self.install_app(ProdWebConfig)
-        self.install_app(HaystackConfigBase)
-        self.install_app("conf.ext_apps.admin_tools.AdminToolsConfig")
-        self.install_app(CeleryConfigBase)
-        self.install_app(RegistrationConfigBase)
-        self.install_app(SouthConfigBase)
-
-
+        self.install_app(HaystackConfig)
+        self.install_app("sigurd.tests.configs.project_complex.BaseWebConfig")
 

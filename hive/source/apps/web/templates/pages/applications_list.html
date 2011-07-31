@@ -64,13 +64,14 @@
 
                     <div class="config-tarball">
                         <span> Tarball: </span>
-                        <a href="/../media/{{ config.file_name }}"> Download </a>
+                      <a href="{% url config_downloader config_id=config.id %}"> Download </a>
+
                     </div>
 
-                    {#<div class="download-count">#}
-                    {#    <span> Download count: </span>#}
-                    {#    TODO#}
-                    {#</div>#}
+                    <div class="download-count">
+                        <span> Download count: </span>
+                        {{ config.downloads }}
+                    </div>
 
                     {#<div class="views-count">#}
                     {#    <span> Views count: </span>#}
