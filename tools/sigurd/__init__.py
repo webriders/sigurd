@@ -1,4 +1,5 @@
 import inspect
+from sigurd import utils
 from sigurd.exceptions import ConfigurationError
 
 class Config(object):
@@ -168,6 +169,8 @@ class BaseProjectConfig(GlobalProjectConfig):
 
         if inspect.isclass(app_config):
             pass
+        elif isinstance(app_config, basestring):
+            app_config = utils.get_class_by_path(app_config)
         else:
             raise ConfigurationError("Project config[%s] : Cannot install application config: [%s]" % (
             self.__class__.__name__, str(app_config)))

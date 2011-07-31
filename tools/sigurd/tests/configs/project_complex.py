@@ -1,7 +1,7 @@
 import os
 import sigurd
 
-class HaystackConfig(sigurd.AppConfig):
+class HaystackConfig(sigurd.BaseAppConfig):
     HAYSTACK_SITECONF = 'conf.haystack.fulltext_search'
     HAYSTACK_SEARCH_ENGINE = 'whoosh'
 
@@ -11,7 +11,7 @@ class HaystackConfig(sigurd.AppConfig):
     def install(self):
         self.install_app("haystack")
 
-class BaseWebConfig(sigurd.AppConfig):
+class BaseWebConfig(sigurd.BaseAppConfig):
     WEBSERVICE_LINK = "http://rambler.com.ua"
 
     def __init__(self, main_setting):
