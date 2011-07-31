@@ -46,7 +46,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     #'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'conf.apps.web.staticfinders.StaticRootFinder',
-    'conf.apps.web.staticfinders.MediaRootFinder',
+    #'conf.apps.web.staticfinders.MediaRootFinder',
 )
 
 # Make this unique, and don't share it with anybody.

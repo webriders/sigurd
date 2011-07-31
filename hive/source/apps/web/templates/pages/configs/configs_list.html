@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <section class="configs-list">
+        <h1>Django Application Configs</h1>
+
+        <ul class="django-applications">
+            {% for app in applications_list %}
+                <li>
+                    {% if app.url %}
+                        <h2><a href="{{ app.url }}">{{ app.slug }}</a></h2>
+                    {% else %}
+                        <h2>{{ app.slug }}</h2>
+                    {% endif %}
+
+                    <ul>
+                        {% for config in app.get_configs %}
+                            <li>
+                                {% include 'pages/configs/configs_list_item.html' %}
+                            </li>
+                        {% empty %}
+                            <li>There are no configs for this application yet.</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% empty %}
+                <li>There are no Django applications registered yet.</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

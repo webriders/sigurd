@@ -1,0 +1,34 @@
+<section class="app-config">
+    {% if config.is_master %}
+        <div class="is-master" title="We are recommend this config as default">master <span>(?)</span></div>
+    {% endif %}
+
+    <h3 class="config-title">{{ config.title }}</h3>
+
+    {% if config.author_name %}
+        <div class="config-author">
+            <strong>Author</strong>: {{ config.author_name }}
+        </div>
+    {% endif %}
+
+    {% if config.description %}
+        <div class="config-description formatted-text">
+            {{ config.description|linebreaksbr }}
+        </div>
+    {% endif %}
+
+    {% if config.supported_versions %}
+        <div class="supported-versions">
+            <strong>App versions supported</strong>: {{ config.supported_versions }}
+        </div>
+    {% endif %}
+
+    <div class="download-archive">
+        <a href="{% url download_config app_slug=app.slug config_slug=config.slug %}">
+            Download
+        </a>
+        <div class="downloads-counter">
+            ({{ config.downloads }} downloads)
+        </div>
+    </div>
+</section>

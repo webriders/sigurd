@@ -28,3 +28,11 @@ a {
 .formatted-text *:last-child {
     margin-bottom: 0;
 }
+
+.plain-article {
+}
+
+.plain-article h1 {
+    font-size: 2em;
+    margin-bottom: 16px;
+}

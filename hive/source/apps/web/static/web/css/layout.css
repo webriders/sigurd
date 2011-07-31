@@ -26,8 +26,8 @@ body {
 
 .site-header h1 {
     font-size: 3.5em;
-    height: 1em;
-    line-height: 1em;
+    height: 60px;
+    line-height: 60px;
     margin: 0;
     float: left;
 }
@@ -44,9 +44,26 @@ body {
 .site-header > p {
     float: left;
     font-size: 1em;
-    line-height: 3.5em;
+    line-height: 60px;
+    height: 60px;
     margin: 0 0 0 10px;
     font-weight: bold;
+}
+
+/*---------------------------------------------------- Social links --------------------------------------------------*/
+.social-buttons {
+    margin: 20px 0 0 40px;
+    float: left;
+}
+
+.social-buttons > .google-plus,
+.social-buttons > .twitter,
+.social-buttons > .facebook-like {
+    float: left;
+}
+
+.social-buttons > .facebook-like {
+    padding-left: 20px;
 }
 
 /*-------------------------------------------------- Big ADD button --------------------------------------------------*/
@@ -158,10 +175,4 @@ nav.main-site-nav p.hint-text {
 
 .site-pusher {
     height: 2em;
-}
-
-
-.social-buttons {
-    padding: 10px;
-    margin-left: 20px;
 }

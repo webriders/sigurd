@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView, CreateView, RedirectVie
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.http import Http404
-from web.models import Application, ApplicationConfig, DownloadsItem
+from web.models import Application, ApplicationConfig, DownloadItem
 from web.forms import ApplicationConfigForm
 
 
@@ -14,18 +14,18 @@ home = HomeView.as_view()
 
 
 class ConfigsList(ListView):
-    template_name = 'pages/configs_list.html'
+    template_name = 'pages/configs/configs_list.html'
     context_object_name = 'applications_list' # we will group configs by applications
     model = Application
 
     def get_queryset(self):
-        return self.model.objects.filter(published=True)
+        return self.model.objects.filter(published=True, applicationconfig__published=True).distinct().select_related()
 
 configs_list = ConfigsList.as_view()
 
 
 class AddConfig(CreateView):
-    template_name = 'pages/add_config.html'
+    template_name = 'pages/configs/add_config.html'
     form_class = ApplicationConfigForm
 
     def get_success_url(self):
@@ -35,7 +35,7 @@ add_config = AddConfig.as_view()
 
 
 class AddConfigSuccess(TemplateView):
-    template_name = 'pages/add_config_success.html'
+    template_name = 'pages/configs/add_config_success.html'
 
 add_config_success = AddConfigSuccess.as_view()
 
@@ -68,8 +68,8 @@ download_config = ConfigDownloader.as_view()
 
 
 class DownloadsView(ListView):
-    template_name = 'pages/downloads_list.html'
-    model = DownloadsItem
+    template_name = 'pages/downloads/downloads_list.html'
+    model = DownloadItem
     context_object_name = 'downloads'
 
 downloads = DownloadsView.as_view()

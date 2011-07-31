@@ -1,0 +1,27 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <section class="downloads-list">
+        <h1>Downloads</h1>
+
+        <ul class="django-applications">
+            {% for item in downloads %}
+                <li class="download-item">
+                    <h2 class="item-title">{% firstof item.title item.get_archive_name %}</h2>
+
+                    {% if item.description %}
+                        <div class="item-description formatted-text">
+                            {{ item.description|safe }}
+                        </div>
+                    {% endif %}
+
+                    <div class="download-file">
+                        <a href="{{ item.archive.url }}">Download</a>
+                    </div>
+                </li>
+            {% empty %}
+                <li>There are no downloads yet.</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

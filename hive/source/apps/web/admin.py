@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django.contrib import admin
-from web.models import Application, ApplicationConfig, DownloadsItem
+from web.models import Application, ApplicationConfig, DownloadItem
 
 
 class ApplicationAdmin(admin.ModelAdmin):
@@ -15,9 +15,9 @@ class ApplicationConfigAdmin(admin.ModelAdmin):
     list_editable = ('published',)
 
 
-class DownloadsItemAdmin(admin.ModelAdmin):
+class DownloadItemAdmin(admin.ModelAdmin):
     save_on_top = True
 
-admin.site.register(DownloadsItem, DownloadsItemAdmin)
+admin.site.register(DownloadItem, DownloadItemAdmin)
 admin.site.register(Application, ApplicationAdmin)
 admin.site.register(ApplicationConfig, ApplicationConfigAdmin)

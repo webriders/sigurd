@@ -22,7 +22,7 @@ class ApplicationConfig(models.Model):
     description = models.TextField(max_length=3096, blank=True, null=True)
     slug = models.SlugField(max_length=64, help_text="Config unique ID")
     author_name = models.CharField(max_length=128, blank=True, null=True)
-    author_email = models.EmailField(max_length=128, blank=True, null=True, verbose_name="Author e-mail")
+    author_email = models.EmailField(max_length=128, blank=True, null=True, verbose_name="Author e-mail", help_text="We will not publish it")
     supported_versions = models.CharField(max_length=128, blank=True, null=True, help_text="Supported application versions, e.g.: \"1.3.1-2.5\", or \"newer than 1.6.3\"")
     archive = models.FileField(upload_to='.', verbose_name=u'Archive with config', help_text="Only .tar.gz and .tgz is supported for now")
     downloads = models.IntegerField(default=0, verbose_name=u"Downloads count")
@@ -30,25 +30,22 @@ class ApplicationConfig(models.Model):
 
     class Meta:
         unique_together = ("application", "slug")
-
-    def save(self, *args, **kwargs):
-        configs = ApplicationConfig.objects.filter(application=self.application, is_master=True)
-        if self.pk:
-            configs.exclude(pk=self.pk)
-        configs.update(is_master=False)
-        super(ApplicationConfig, self).save(*args, **kwargs)
-
+    
     def __unicode__(self):
         return self.title or self.slug
 
 
-class DownloadsItem(models.Model):
-    title = models.CharField(max_length=256)
-    description = models.TextField(max_length=2048)
+class DownloadItem(models.Model):
+    title = models.CharField(max_length=256, blank=True, null=True)
+    description = models.TextField(max_length=2048, blank=True, null=True)
     archive = models.FileField(upload_to='downloads/')
 
+    def get_archive_name(self):
+        import os.path
+        return os.path.basename(self.archive.name)
+
     def __unicode__(self):
-        return u'Edit Downloads'
+        return self.title or self.archive.url
 
     class Meta:
         verbose_name = u'Downloads'
