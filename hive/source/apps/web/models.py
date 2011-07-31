@@ -29,7 +29,6 @@ class ApplicationConfig(models.Model):
     is_master = models.BooleanField(blank=True, verbose_name=u'Is master (default)')
 
     def save(self, *args, **kwargs):
-
         configs = ApplicationConfig.objects.filter(application=self.application, is_master=True)
         if self.pk:
             configs.exclude(pk=self.pk)
