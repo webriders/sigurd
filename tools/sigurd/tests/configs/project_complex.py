@@ -25,8 +25,9 @@ class BaseWebConfig(sigurd.BaseAppConfig):
         self.install_middleware_class("web.middleware.RegionSelectorMiddleware", prepend=True)
         self.install_context_processor("web.context_processors.add_cities")
 
-    def install_urls(self, main_urls):
+    def init_urls(self, main_urls):
         self.install_url(main_urls, r'^$', 'web.urls')
+        self.install_url(main_urls, r'^profile/$', 'web.urls.profile', prepend=True)
 
 
 class ProdWebConfig(BaseWebConfig):

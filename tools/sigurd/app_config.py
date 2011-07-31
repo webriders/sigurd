@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 from sigurd.base import Config
+from django.conf.urls.defaults import include, url
 
 class BaseAppConfig(Config):
     """
@@ -28,6 +29,13 @@ class BaseAppConfig(Config):
          - middleware;
          - context processors;
          - ets.
+        """
+        pass
+
+    def init_urls(self, main_url_patterns):
+        """
+        Override this method to install your custom application URL.
+        You can do this using self.install_url()
         """
         pass
 
@@ -89,16 +97,17 @@ class BaseAppConfig(Config):
         print(" + context processor: '%s'" % context_processor)
 
     def inject(self):
+        """
+        Used by project config to build all django settings
+        """
         self.init_settings()
         self.init_extensions()
         dict = self.get_settings_dict()
         for key, value in dict.items():
             self.set_main_setting(key, value)
 
-    def get_urls(self):
-        pass # TODO
-
-    def install_url(self, main_urls, url_regexp_pattern, path_to_urls):
-        pass
-
-
+    def install_url(self, main_urls, url_regexp_pattern, path_to_urls, prepend=False):
+        if prepend:
+            main_urls.insert(0, url(url_regexp_pattern, include(path_to_urls)))
+        else:
+            main_urls.append(url(url_regexp_pattern, include(path_to_urls)))

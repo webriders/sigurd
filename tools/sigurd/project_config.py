@@ -41,7 +41,7 @@ class BaseProjectConfig(GlobalProjectConfig):
         Used to update project URL patterns.
         """
         for app in self.app_configs:
-            pass
+            app.init_urls(urlpatterns)
 
     def install_app(self, app_config):
         """
