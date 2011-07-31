@@ -2,7 +2,7 @@ import os
 import sigurd
 
 class HaystackConfig(sigurd.BaseAppConfig):
-    HAYSTACK_SITECONF = 'conf.ext_apps.haystack.fulltext_search'
+    HAYSTACK_SITECONF = 'conf.haystack.fulltext_search'
     HAYSTACK_SEARCH_ENGINE = 'whoosh'
 
     def init_settings(self):
@@ -157,10 +157,14 @@ class TestComplexProjectConfig(sigurd.BaseProjectConfig):
         self.install_app(HaystackConfig)
         self.install_app("sigurd.tests.configs.project_complex.BaseWebConfig")
 
-class DemoTestComplexProjectConfig(sigurd.BaseProjectConfig):
+class DemoTestComplexProjectConfig(TestComplexProjectConfig):
+    DEBUG=True
+
     def install_apps(self):
         self.install_app("sigurd.tests.configs.project_complex.BaseWebConfig")
 
-class ProdTestComplexProjectConfig(sigurd.BaseProjectConfig):
+class ProdTestComplexProjectConfig(TestComplexProjectConfig):
+    DEBUG=False
+
     def install_apps(self):
         self.install_app(HaystackConfig)

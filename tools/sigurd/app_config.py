@@ -8,12 +8,19 @@ class BaseAppConfig(Config):
     Django Application config.
     Contains settings and urls.
     """
-    MIDDLEWARE_CLASSES_KEY = 'MIDDLEWARE_CLASSES'
-    CONTEXT_PROCESSORS_KEY = 'TEMPLATE_CONTEXT_PROCESSORS'
-    INSTALLED_APPS_KEY = 'INSTALLED_APPS'
+    _MIDDLEWARE_CLASSES_KEY = 'MIDDLEWARE_CLASSES'
+    _CONTEXT_PROCESSORS_KEY = 'TEMPLATE_CONTEXT_PROCESSORS'
+    _INSTALLED_APPS_KEY = 'INSTALLED_APPS'
 
     def __init__(self, main_settings):
         self.main_settings = main_settings
+
+        # internal storage for settings (debug purposes, maybe future refactorings)
+        self.internal_settings = {}
+        self.internal_mds = []
+        self.internal_cps = []
+        self.internal_apps = []
+        self.internal_urls = []
 
     def init_settings(self):
         """
@@ -38,6 +45,9 @@ class BaseAppConfig(Config):
         You can do this using self.install_url()
         """
         pass
+
+    def get_name(self):
+        return self.__class__.__name__
 
     def get_main_settings(self):
         return self.main_settings
@@ -79,22 +89,25 @@ class BaseAppConfig(Config):
         at = None
         if prepend:
             at = 0
-        self.extend_main_list_setting(self.INSTALLED_APPS_KEY, app_name, at)
+        self.extend_main_list_setting(self._INSTALLED_APPS_KEY, app_name, at)
         print(" + app: '%s'" % app_name)
+        self.internal_apps.append(app_name)
 
     def install_middleware_class(self, middleware, prepend=False):
         at = None
         if prepend:
             at = 0
-        self.extend_main_list_setting(self.MIDDLEWARE_CLASSES_KEY, middleware, at)
+        self.extend_main_list_setting(self._MIDDLEWARE_CLASSES_KEY, middleware, at)
         print(" + middleware: '%s'" % middleware)
+        self.internal_mds.append(middleware)
 
     def install_context_processor(self, context_processor, prepend=False):
         at = None
         if prepend:
             at = 0
-        self.extend_main_list_setting(self.CONTEXT_PROCESSORS_KEY, context_processor, at)
+        self.extend_main_list_setting(self._CONTEXT_PROCESSORS_KEY, context_processor, at)
         print(" + context processor: '%s'" % context_processor)
+        self.internal_cps.append(context_processor)
 
     def install_url(self, urlpatterns, url_regexp_pattern, path_to_urls, prepend=False):
         pattern = url(url_regexp_pattern, include(path_to_urls))
@@ -102,6 +115,7 @@ class BaseAppConfig(Config):
             urlpatterns.insert(0, pattern)
         else:
             urlpatterns.append(pattern)
+        self.internal_urls.append("'%s': include(%s)" % (str(url_regexp_pattern), str(path_to_urls)))
 
     def _inject_settings(self):
         """
@@ -113,4 +127,5 @@ class BaseAppConfig(Config):
         dict = self.get_settings_dict()
         for key, value in dict.items():
             self.set_main_setting(key, value)
+            self.internal_settings[key] = value
 

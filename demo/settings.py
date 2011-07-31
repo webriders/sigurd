@@ -16,4 +16,3 @@ sys.path = [
     EXTERNAL_LIB_ROOT,
 ] + sys.path
 
-from conf.profiles.dev import *

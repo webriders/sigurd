@@ -1,12 +1,6 @@
 import os
-from conf.apps.web.config import ProdWebConfig
-from conf.ext_apps.celery.config import CeleryConfig
-from conf.ext_apps.haystack.config import HaystackConfig
-from conf.ext_apps.registration.config import RegistrationConfig
-from conf.ext_apps.south.config import SouthConfig
 
 import sigurd
-import sys
 
 class MainProjectConfig(sigurd.BaseProjectConfig):
     # Django settings for demo project.
@@ -46,7 +40,7 @@ class MainProjectConfig(sigurd.BaseProjectConfig):
     PROJECT_ROOT = os.path.abspath('..')
     MEDIA_ROOT = ''
     MEDIA_URL = ''
-    STATIC_ROOT = ''
+    STATIC_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, "demo", "static"))
     STATIC_URL = '/static/'
 
     # URL prefix for admin static files -- CSS, JavaScript and images.
@@ -109,11 +103,5 @@ class MainProjectConfig(sigurd.BaseProjectConfig):
     )
 
     def install_apps(self):
-        self.install_app(ProdWebConfig)
-        self.install_app(HaystackConfig)
-        self.install_app("conf.ext_apps.admin_tools.AdminToolsConfig")
-        self.install_app(CeleryConfig)
-        self.install_app(RegistrationConfig)
-        self.install_app(SouthConfig)
-
-
+        # all apps are enabled at Prod/Dev profiles
+        pass

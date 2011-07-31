@@ -3,5 +3,6 @@ django-admin-tools==0.4.0
 django-celery==2.2.4
 django-haystack==1.2.4
 South==0.7.3
-django-registration==0.7
 django-debug-toolbar==0.8.5
+Whoosh==2.0.0
+-e hg+https://bitbucket.org/ubernostrum/django-registration@58eef8330b0f#egg=django-registration
