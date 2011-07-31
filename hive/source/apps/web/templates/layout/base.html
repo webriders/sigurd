@@ -25,9 +25,10 @@
     <header class="site-header">
         <h1>Sigurd</h1>
         <p>The Django Project Configurator!</p>
+        <a class="add-config-button" href="{% url add_app_config %}"><strong>Add</strong> your app config!</a>
     </header>
 
-    {% include 'include/menu.html' %}
+    {% include 'layout/menu.html' %}
 
     <div class="site-content">
         {% block content %}
