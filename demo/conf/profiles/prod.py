@@ -35,8 +35,3 @@ class ProdProjectConfig(MainProjectConfig):
             },
         }
     }
-
-ACTIVE_PROFILE = ProdProjectConfig()
-ProdProjectConfig().export_settings(globals())
-
-  
