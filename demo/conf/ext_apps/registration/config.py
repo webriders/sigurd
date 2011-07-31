@@ -1,6 +1,6 @@
 import sigurd
 
-class Settings(sigurd.AppConfig):
+class RegistrationConfig(sigurd.AppConfig):
     ACCOUNT_ACTIVATION_DAYS = 7
 
     def install(self):
