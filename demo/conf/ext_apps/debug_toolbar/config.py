@@ -1,6 +1,6 @@
 import sigurd
 
-class DebugToolbarConfigBase(sigurd.BaseAppConfig):
+class DebugToolbarConfig(sigurd.BaseAppConfig):
 
     INTERNAL_IPS = ('127.0.0.1',)
     DEBUG_TOOLBAR_CONFIG = {
@@ -18,6 +18,6 @@ class DebugToolbarConfigBase(sigurd.BaseAppConfig):
         'debug_toolbar.panels.logger.LoggingPanel',
     )
 
-    def install(self):
+    def init_extensions(self):
         self.install_app("debug_toolbar")
-        self.install_middleware("debug_toolbar.middleware.DebugToolbarMiddleware")
+        self.install_middleware_class("debug_toolbar.middleware.DebugToolbarMiddleware")

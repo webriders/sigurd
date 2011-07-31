@@ -1,6 +1,6 @@
 import sigurd
 
-class SouthConfigBase(sigurd.BaseAppConfig):
+class SouthConfig(sigurd.BaseAppConfig):
 
-    def install(self):
+    def init_extensions(self):
         self.install_app("south")

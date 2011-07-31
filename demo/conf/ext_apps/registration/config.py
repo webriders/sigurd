@@ -1,10 +1,10 @@
 import sigurd
 
-class RegistrationConfigBase(sigurd.BaseAppConfig):
+class RegistrationConfig(sigurd.BaseAppConfig):
     ACCOUNT_ACTIVATION_DAYS = 7
 
-    def install(self):
+    def init_settings(self):
         self.install_app("registration")
 
-    def get_urls(self):
-        self.install_urls(r'^accounts/', 'registration.backends.default.urls')
+    def init_urls(self, urlpatterns):
+        self.install_url(urlpatterns, r'^accounts/', 'registration.backends.default.urls')
