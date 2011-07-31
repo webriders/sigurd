@@ -64,7 +64,17 @@ class AppConfig(Config):
             setting = setting[:at] + value + setting[at:]
         self.set_main_setting(key, setting)
 
-    def install_app(self, app_name, prepend=False):
+    def install_app(self, app_name=None, prepend=False):
+        """
+        Add app_name to the INSTALLED_APPS
+        If app_name is not specified - it tries to find self.app_name
+        """
+        if not app_name:
+            app_name = getattr(self, 'app_name')
+
+        if not app_name:
+            return None
+
         at = None
         if prepend:
             at = 0
@@ -93,6 +103,7 @@ class AppConfig(Config):
         Override this method if you want to add middlewares, context_processors, etc.
         Don't forget to call self.install_settings() if you want to add your custom app conf settings
         """
+        self.install_app()
         self.install_settings()
 
     def get_urls(self):
