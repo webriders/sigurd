@@ -32,3 +32,18 @@ class AppConfig(object):
         pass
 
 
+class ProjectConfig(object):
+
+    def export_settings(self, module_global_scope):
+        pass
+
+
+class BaseDependencies(object):
+    def resolve_app(self, app_name, version=None, config_only=True, config_id=None):
+        pass
+
+    def resolve_static(self, lib_name, version=None):
+        pass
+
+    def resolve_lib(self, lib_name, version=None):
+        pass
