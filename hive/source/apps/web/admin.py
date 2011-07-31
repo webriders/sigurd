@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django.contrib import admin
-from web.models import Application, ApplicationConfig, DownloadItem
+from web.models import Application, ApplicationConfig, DownloadItem, Info
 
 
 class ApplicationAdmin(admin.ModelAdmin):
@@ -21,3 +21,4 @@ class DownloadItemAdmin(admin.ModelAdmin):
 admin.site.register(DownloadItem, DownloadItemAdmin)
 admin.site.register(Application, ApplicationAdmin)
 admin.site.register(ApplicationConfig, ApplicationConfigAdmin)
+admin.site.register(Info)

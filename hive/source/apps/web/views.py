@@ -3,12 +3,19 @@ from django.views.generic import TemplateView, ListView, CreateView, RedirectVie
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.http import Http404
-from web.models import Application, ApplicationConfig, DownloadItem
+from web.models import Application, ApplicationConfig, DownloadItem, Info
 from web.forms import ApplicationConfigForm
 
 
 class HomeView(TemplateView):
     template_name = 'pages/home/homepage.html'
+
+    def get_context_data(self, **kwargs):
+        data = super(HomeView, self).get_context_data(**kwargs)
+        info = Info.objects.all()
+        if info:
+            data['video_link'] = info[0].video_link
+        return data
 
 home = HomeView.as_view()
 

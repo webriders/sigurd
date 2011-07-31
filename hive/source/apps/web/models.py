@@ -50,3 +50,7 @@ class DownloadItem(models.Model):
     class Meta:
         verbose_name = u'Downloads'
         verbose_name_plural = verbose_name
+
+
+class Info(models.Model):
+    video_link = models.CharField(max_length=512)

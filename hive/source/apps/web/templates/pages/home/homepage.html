@@ -14,7 +14,15 @@
             Django 1.3 brings class-based views, Sigurd brings <strong>class-based settings</strong><br/>
             With order we bring abilities!
         </p>
-        <p>You able to simply create:</p>
+
+        {% if video_link %}
+            <p>
+                Demo video: <br/>
+                <iframe src="{{ video_link }}" width="400" height="300" frameborder="0"></iframe>
+            </p>
+        {% endif %}
+
+        <p><strong>With Sigurd</strong> you're able to simply create:</p>
         <ul class="features-list">
             <li>
                 <h3>Application configurations</h3>
@@ -46,6 +54,7 @@
             </li>
         </ul>
     </section>
+
     <section class="formatted-text">
         <h1>What can you do?</h1>
         <ul>
