@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView, CreateView, RedirectVie
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.http import Http404
-from web.models import Application, ApplicationConfig
+from web.models import Application, ApplicationConfig, DownloadsItem
 from web.forms import ApplicationConfigForm
 
 
@@ -13,14 +13,15 @@ class HomeView(TemplateView):
 home = HomeView.as_view()
 
 
-class ApplicationsList(ListView):
+class ConfigsList(ListView):
     template_name = 'pages/configs_list.html'
-    context_object_name = 'applications_list'
+    context_object_name = 'applications_list' # we will group configs by applications
+    model = Application
 
     def get_queryset(self):
-        return Application.objects.filter(published=True)
+        return self.model.objects.filter(published=True)
 
-applications_list = ApplicationsList.as_view()
+configs_list = ConfigsList.as_view()
 
 
 class AddConfig(CreateView):
@@ -64,3 +65,11 @@ class ConfigDownloader(RedirectView):
         return config.archive.url
 
 download_config = ConfigDownloader.as_view()
+
+
+class DownloadsView(ListView):
+    template_name = 'pages/downloads_list.html'
+    model = DownloadsItem
+    context_object_name = 'downloads'
+
+downloads = DownloadsView.as_view()

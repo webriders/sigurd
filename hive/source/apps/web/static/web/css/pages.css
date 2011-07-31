@@ -79,7 +79,7 @@ ul.features-list li p {
 }
 
 /* Configs list */
-#applications_title {
+#applications_title, #downloads_title {
     font-size: 25px;
     margin-bottom: 20px;
 }
@@ -149,3 +149,24 @@ ul.features-list li p {
 
 }
 
+
+.downloads-description {
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.downloads-url {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.downloads-url a {
+    border: 1px solid;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+    background-color: #c9013e;
+}
