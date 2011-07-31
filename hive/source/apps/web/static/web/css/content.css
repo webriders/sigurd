@@ -1,84 +1,30 @@
-p {
-    margin: 0 0 10px;
+a {
+    color: #6495ed;
 }
 
-nav a {
-    margin: 5px;
+.lightgray {
+    color: #b1acac;
 }
 
-.add-app-config  {
-    border: 2px solid gray;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 5px;
-    background-color: #ffffcc;
-    width: 90px;
-    cursor: pointer;
+.formatted-text {}
+
+.formatted-text p {
+    margin-bottom: 16px;
 }
 
-.add-app-config a {
-    cursor: pointer;
-    color: #cc3300;
-    text-decoration: none;
+.formatted-text h1 {
+    font-size: 2em;
+    margin-bottom: 16px;
 }
 
-
-.application {
-    margin-bottom: 60px;
+.formatted-text ul {
+    padding-left: 40px;
 }
 
-.app-config {
-    border: 1px solid;
-    padding: 10px;
-    margin: 30px;
+.formatted-text ul li {
+    padding-bottom: 10px;
 }
 
-.app-config span {
-    font-weight: bold;
+.formatted-text *:last-child {
+    margin-bottom: 0;
 }
-
-.app-config .config-is-master {
-    color: red;
-}
-
-.app-config .config-title {
- 
-}
-
-.app-config .config-description {
-
-}
-
-.app-config .config-author-name {
-
-}
-
-.app-config .config-author-email {
-
-}
-
-.add-config-form {
-    margin-bottom: 50px;
-}
-
-.app-config-form-field {
-    margin-bottom: 10px;
-    margin-left: 50px;
-
-}
-
-.app-config-form-field-error li {
-    color: red;
-    list-style: none;
-}
-
-
-.app-config-form-field label {
-    display: block;
-
-}
-.app-config-form-field label.required {
-    font-weight: bold;
-
-}
-
