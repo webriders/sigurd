@@ -1,6 +1,6 @@
 import sigurd
 
-# @TODO: UNIMPLEMENTED CODE FOR DJANGO DASH (FUTURE IDEA)
+# @TODO: UNIMPLEMENTED CODE (NOT PLANNED FOR DJANGO DASH - FUTURE AREA)
 
 class Dependencies(sigurd.BaseDependencies):
     EXT_APPS_PATH = "apps/ext/"
@@ -19,4 +19,5 @@ class Dependencies(sigurd.BaseDependencies):
     def resolve_statics(self):
         self.resolve_static("jquery", version="1.6.1")
         self.resolve_static("fancybox", version="0.1")
+
 

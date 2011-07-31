@@ -1,13 +1,12 @@
 import os
 import sigurd
 
-class HaystackConfigBase(sigurd.BaseAppConfig):
-    HAYSTACK_SITECONF = 'conf.haystack.fulltext_search'
+class HaystackConfig(sigurd.BaseAppConfig):
+    HAYSTACK_SITECONF = 'conf.ext_apps.haystack.fulltext_search'
     HAYSTACK_SEARCH_ENGINE = 'whoosh'
 
-    def __init__(self, main_settings):
-        super(HaystackConfigBase).__init__(main_settings)
-        HAYSTACK_WHOOSH_PATH = os.path.join(main_settings.PROJECT_ROOT, 'search_index')
+    def init_settings(self):
+        self.HAYSTACK_WHOOSH_PATH = os.path.join(self.main_settings.PROJECT_ROOT, 'search_index')
 
-    def install(self):
+    def init_extensions(self):
         self.install_app("haystack")

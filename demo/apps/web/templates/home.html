@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sigurd - Demo!</title>
+    <meta name="author" content="WebRiders" />
+
+    {% block css %}
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>
+            Sigurd demo site
+        </h1>
+    </header>
+
+    <div class="site-content">
+        {% block content %}
+            <p>
+                This site was created using Sigurd project. This means that application settings are made using
+                configuration class files.
+            </p>
+            <p>
+                {{ ACTIVE_SIGURD_PROFILE }}
+            </p>
+        {% endblock %}
+    </div>
+
+    <div class="site-pusher"></div>
+
+    <footer class="site-footer">
+        <p>2011 &copy; Made by <a href="http://webriders.com.ua/">WebRiders</a></p>
+    </footer>
+</body>
+
+</html>

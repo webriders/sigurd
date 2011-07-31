@@ -18,7 +18,7 @@ class GlobalProjectConfig(Config):
 
 
 class BaseProjectConfig(GlobalProjectConfig):
-    _ACTIVE_PROFILE_SETTING_NAME = "active_profile"
+    _ACTIVE_PROFILE_SETTING_NAME = "ACTIVE_SIGURD_PROFILE"
 
     def __init__(self):
         self.app_configs = []
@@ -86,10 +86,10 @@ class BaseProjectConfig(GlobalProjectConfig):
         Example usage: <project_root>.urls.py - to install apps urls.
         """
         print("---------------------------------------")
-        print("[SIGURD] Starting project configuration")
+        print("[SIGURD:%s] Starting project configuration" % self.__class__.__name__)
         print("---------------------------------------\n")
         self.install_apps()
         globals.update(self.get_settings_dict())
         globals[self._ACTIVE_PROFILE_SETTING_NAME] = self
-        print("-- [SIGURD] Finished configuration --")
+        print("-- [SIGURD:%s] Finished configuration --" % self.__class__.__name__)
         print("---------------------------------------\n")
