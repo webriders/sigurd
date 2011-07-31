@@ -1,0 +1,164 @@
+[
+    {
+        "pk": 1, 
+        "model": "web.application", 
+        "fields": {
+            "url": "http://south.aeracode.org/", 
+            "slug": "south", 
+            "published": true
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "web.application", 
+        "fields": {
+            "url": "http://haystacksearch.org/", 
+            "slug": "haystack", 
+            "published": true
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "web.application", 
+        "fields": {
+            "url": "https://bitbucket.org/izi/django-admin-tools/overview", 
+            "slug": "admin_tools", 
+            "published": true
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "web.application", 
+        "fields": {
+            "url": "https://bitbucket.org/ubernostrum/django-registration", 
+            "slug": "registration", 
+            "published": true
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "web.application", 
+        "fields": {
+            "url": "http://celeryproject.org/", 
+            "slug": "celery", 
+            "published": true
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "web.application", 
+        "fields": {
+            "url": "http://pypi.python.org/pypi/django-debug-toolbar/0.8.4", 
+            "slug": "debug_toolbar", 
+            "published": true
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "web.applicationconfig", 
+        "fields": {
+            "supported_versions": "0.2 - 0.7.x", 
+            "description": "Default configuration from WebRiders", 
+            "title": "Default", 
+            "author_email": "sa@webriders.com.ua", 
+            "downloads": 0, 
+            "author_name": "WebRiders", 
+            "archive": "./south__default.tar.gz", 
+            "application": 1, 
+            "publish_date": "2011-07-31 21:31:14", 
+            "published": false, 
+            "is_master": true, 
+            "slug": "default"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "web.applicationconfig", 
+        "fields": {
+            "supported_versions": "all", 
+            "description": "Default configuration from WebRiders", 
+            "title": "Default", 
+            "author_email": "sa@webriders.com.ua", 
+            "downloads": 0, 
+            "author_name": "WebRiders", 
+            "archive": "./haystack__default.tar.gz", 
+            "application": 2, 
+            "publish_date": "2011-07-31 21:31:14", 
+            "published": false, 
+            "is_master": true, 
+            "slug": "default"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "web.applicationconfig", 
+        "fields": {
+            "supported_versions": "<= 4.0.x", 
+            "description": "Default configuration from WebRiders", 
+            "title": "Default", 
+            "author_email": "sa@webriders.com.ua", 
+            "downloads": 0, 
+            "author_name": "WebRiders", 
+            "archive": "./admin_tools__default.tar.gz", 
+            "application": 3, 
+            "publish_date": "2011-07-31 21:31:14", 
+            "published": false, 
+            "is_master": true, 
+            "slug": "default"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "web.applicationconfig", 
+        "fields": {
+            "supported_versions": "", 
+            "description": "Default configuration from WebRiders", 
+            "title": "Default", 
+            "author_email": "sa@webriders.com.ua", 
+            "downloads": 0, 
+            "author_name": "WebRiders", 
+            "archive": "./registration__default.tar.gz", 
+            "application": 4, 
+            "publish_date": "2011-07-31 21:31:14", 
+            "published": false, 
+            "is_master": true, 
+            "slug": "default"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "web.applicationconfig", 
+        "fields": {
+            "supported_versions": "", 
+            "description": "Default configuration from WebRiders", 
+            "title": "DT default", 
+            "author_email": "sa@webriders.com.ua", 
+            "downloads": 0, 
+            "author_name": "WebRiders", 
+            "archive": "./debug_toolbar__dt_default.tar.gz", 
+            "application": 6, 
+            "publish_date": "2011-07-31 21:31:14", 
+            "published": false, 
+            "is_master": true, 
+            "slug": "dt_default"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "web.applicationconfig", 
+        "fields": {
+            "supported_versions": "all", 
+            "description": "Main celery from WebRiders", 
+            "title": "Main celery", 
+            "author_email": "artas90@gmail.com", 
+            "downloads": 0, 
+            "author_name": "WebRiders", 
+            "archive": "./celery__main_celery.tar.gz", 
+            "application": 5, 
+            "publish_date": "2011-07-31 21:31:14", 
+            "published": false, 
+            "is_master": false, 
+            "slug": "main_celery"
+        }
+    }
+]
