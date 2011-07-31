@@ -20,6 +20,9 @@ class Config(object):
         """
         return key.isupper() and key[0] != '_'
 
+    def export_settings(self, globals):
+        globals.update(self.get_settings_dict())
+
 
 #================================================== Application Config =================================================
 class BaseAppConfig(Config):
