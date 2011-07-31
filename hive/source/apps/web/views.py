@@ -1,7 +1,7 @@
 from os import path
 from django.views.generic import TemplateView, ListView, CreateView, RedirectView
 from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, get_list_or_404
 from django.http import Http404
 from web.models import Application, ApplicationConfig
 from web.forms import ApplicationConfigForm
@@ -40,12 +40,23 @@ add_app_config_success = AddAppConfigSuccess.as_view()
 class ConfigDownloader(RedirectView):
     permanent = False
 
-    def get_redirect_url(self, config_id, **kwargs):
-        config = get_object_or_404(ApplicationConfig, id=config_id)
+    def get_redirect_url(self, app_slug, config_slug=None, **kwargs):
 
-        if not config.archive:
-            raise Http404
+        if config_slug:
+            config = get_object_or_404(ApplicationConfig, application__slug=app_slug, slug=config_slug)
 
+            if not config.archive:
+                raise Http404("File not found!")
+
+        else:
+            configs = ApplicationConfig.objects.filter(application__slug=app_slug)
+            if not configs:
+                raise Http404('Configs not found!')
+
+            config = configs.filter(is_master=True)
+            if not config:
+                config = configs[0]
+            
         config.downloads += 1
         config.save()
         return config.archive.url

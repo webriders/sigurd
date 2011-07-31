@@ -44,8 +44,9 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'conf.apps.web.staticfinders.StaticRootFinder',
+    'conf.apps.web.staticfinders.MediaRootFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -140,7 +141,7 @@ PROJECT_ROOT = os.path.abspath('..')
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, 'media'))
+PROJECT_MEDIA_ROOT = MEDIA_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, 'media'))
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.

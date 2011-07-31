@@ -134,13 +134,25 @@ nav.main-site-nav p.hint-text {
 /*----------------------------------------------------- Content ------------------------------------------------------*/
 .site-content {
     padding: 16px;
+    overflow: hidden;
 }
 
 .site-footer {
-    padding: 10px;
-    margin-top: 20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0 1em;
+    height: 2em;
+    line-height: 2em;
+    font-size: 0.9em;
+    background: #000;
+    width: 100%;
 }
 
 .site-footer p {
     margin: 0;
+}
+
+.site-pusher {
+    height: 2em;
 }
