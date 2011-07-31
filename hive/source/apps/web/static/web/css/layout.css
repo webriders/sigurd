@@ -159,3 +159,9 @@ nav.main-site-nav p.hint-text {
 .site-pusher {
     height: 2em;
 }
+
+
+.social-buttons {
+    padding: 10px;
+    margin-left: 20px;
+}
