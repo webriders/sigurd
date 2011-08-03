@@ -124,10 +124,14 @@ LOGGING = {
     }
 }
 
+import os
+
+PROJECT_ROOT = os.path.abspath('..')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db/dev.sqlite',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(PROJECT_ROOT, 'source', 'db', 'dev.sqlite'), # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -135,9 +139,7 @@ DATABASES = {
     }
 }
 
-import os
 
-PROJECT_ROOT = os.path.abspath('..')
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
