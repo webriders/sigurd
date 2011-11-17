@@ -31,13 +31,13 @@ There are:
 Installation
 ^^^^^^^^^^^^
 
-TODO: we are plan to make a distributive that you could install with pip:
+TODO: we are planning to release a distributable that will be installable via pip:
 
 ::
     
     pip install sigurd
 
-But for now only source code is available at http://github.com/webriders/sigurd
+But for now, only the source code is available at http://github.com/webriders/sigurd
 
 
 ----------------
